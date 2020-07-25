@@ -23,14 +23,21 @@ namespace XUnitTestProject1
         [Fact]
         public async Task t2()
         {
-            //string url = "https://secure.e-konsulat.gov.pl/Wizyty/Paszportowe/RejestracjaTerminuWizytyPaszportowej.aspx?IDPlacowki=159";
-            string url = "https://secure.e-konsulat.gov.pl/Informacyjne/Placowka.aspx?IDPlacowki=159";
+            string url1 = "https://secure.e-konsulat.gov.pl/Informacyjne/Placowka.aspx?IDPlacowki=159";
+            string url2 = "https://secure.e-konsulat.gov.pl/Wizyty/Paszportowe/RejestracjaTerminuWizytyPaszportowej.aspx?IDPlacowki=159";
 
-            var context = BrowsingContext.New(Configuration.Default.WithDefaultLoader().WithCookies());
-            var document = await context.OpenAsync(url);
-            string result = document.DocumentElement.OuterHtml;
+            var context = BrowsingContext.New(Configuration.Default.WithDefaultLoader().WithJs()
+                .WithTemporaryCookies()
+                //.WithPersistentCookies("D:\\logs")
+            );
+            var document1 = await context.OpenAsync(url1);
+            string result1 = document1.DocumentElement.OuterHtml;
+            var cc1 = context.GetCookie(new Url(url1));
 
-            Assert.True(result  != null);
+            var document2 = await context.OpenAsync(url2);
+            string result2 = document2.DocumentElement.OuterHtml;
+
+            Assert.True(result2  != null);
             //https://secure.e-konsulat.gov.pl/Informacyjne/Placowka.aspx?IDPlacowki=159
         }
     }

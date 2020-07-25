@@ -1,0 +1,3 @@
+https://stackoverflow.com/questions/55249058/anglesharp-how-to-browse-website-whose-links-trigger-form-submission
+
+https://github.com/AngleSharp/AngleSharp/blob/532b5c1b1b77134e45b649c6f9e4033e083f1014/src/AngleSharp.Core.Tests/Library/CookieHandling.cs#L385
