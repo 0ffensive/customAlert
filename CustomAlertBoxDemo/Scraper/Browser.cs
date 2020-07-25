@@ -3,32 +3,40 @@ using System.Threading.Tasks;
 using AngleSharp;
 using AngleSharp.Dom;
 using AngleSharp.Io;
+using AngleSharp.Io.Network;
 
 namespace CustomAlertBoxDemo
 {
     public class Browser
     {
         public readonly IBrowsingContext Context;
-        public readonly MyHttpClient HttpClient;
+        //public readonly MyHttpClient HttpClient;
 
-        public Browser(MyHttpClient httpClient)
+        //public Browser(MyHttpClient httpClient)
+        public Browser()
         {
+            //HttpClient = httpClient;
+
             //We require a custom configuration
             var config = Configuration.Default.WithJs();
 
             //Create a new context for evaluating webpages with the given config
             var context = BrowsingContext.New(config);
 
+            LoaderOptions lo = new LoaderOptions();
+            lo.IsNavigationDisabled = false;
+            lo.IsResourceLoadingEnabled = true;
 
-                HttpClient = httpClient;
-            var requester = new HttpClientRequester(httpClient);
-            var configuration = Configuration
-                .Default
-                .WithDefaultLoader(requesters: new[] {requester},
-                    setup: setup => { setup.IsNavigationEnabled = true; })
-                .WithJavaScript()
-                .WithCss()
-                .WithCookies();
+            //var requester = new HttpClientRequester(httpClient);
+
+            var configuration = Configuration.Default
+                .WithDefaultLoader(lo)
+                .WithJs()
+                .WithPersistentCookies("d:\\logs")
+                .WithRequesters(new MyClientHandler())
+                //.WithCss()
+                //.WithCookies()
+                ;
             Context = BrowsingContext.New(configuration);
         }
 
@@ -36,9 +44,10 @@ namespace CustomAlertBoxDemo
         {
             var request = DocumentRequest.Get(Url.Create(url));
 
-
-            var response = await Context.Loader.DownloadAsync(request).Task;
-            var document = await Context.OpenAsync(response, CancellationToken.None);
+            //var response = await Context.NavigateTo.Loader.DownloadAsync(request).Task;
+            //var document = await Context.OpenAsync(response, CancellationToken.None);
+            
+            var document = await Context.OpenAsync(request);
             return document;
         }
     }
