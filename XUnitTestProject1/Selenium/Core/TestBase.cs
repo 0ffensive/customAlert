@@ -13,6 +13,8 @@ namespace XUnitTestProject1.Selenium
 {
     public class TestBase : XunitContextBase, IDisposable
     {
+        public bool CloseBrowser { get; set; }
+
         // Driver factory and web driver
         public DriverFactory driverFactory;
         public IWebDriver driver;
@@ -29,27 +31,12 @@ namespace XUnitTestProject1.Selenium
             driverFactory = new DriverFactory();
             driver = driverFactory.CreateDriver();
 
-            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Constants.Driver.TimeOut.FindWebElement);
-
-
-
-            // Login pages
-            //loginPage = new LoginPage(driver);
-
             // Enable output logging in Xunit test
             this.output = output;
 
             // Enable capturing of exceptions for taking screenshots for failed tests
             XunitContext.EnableExceptionCapture();
         }
-
-        // Login pages
-        //public LoginPage loginPage;
-
-        // Common elements pages
-        //public Header header;
-        //public Footer footer;
-        //public BetaBanner betaBanner;
 
         public override void Dispose()
         {
@@ -91,8 +78,11 @@ namespace XUnitTestProject1.Selenium
             }
 
             // Close browser window and dispose webdriver and driver factory object
-            //driver.Dispose();
-            //driverFactory.Dispose();
+            if (CloseBrowser)
+            {
+                driver.Dispose();
+                driverFactory.Dispose();
+            }
         }
     }
 }

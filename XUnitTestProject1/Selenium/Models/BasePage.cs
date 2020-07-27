@@ -2,7 +2,7 @@
 
 namespace XUnitTestProject1.Selenium
 {
-    public abstract class BasePage : IRegAppPage
+    public abstract class BasePage : IPage
     {
         public IWebDriver Driver { get; }
 
@@ -15,17 +15,6 @@ namespace XUnitTestProject1.Selenium
         public string DriverName => Driver.GetType().ToString();
         
         public string Url { get; set; }
-
-        public bool IsElementPresent(By by)
-        {
-            try{
-                Driver.FindElement(by);
-                return true;
-            }
-            catch(NoSuchElementException e){
-                return false;
-            }
-        }
 
     }
 }

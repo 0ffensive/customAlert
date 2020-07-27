@@ -1,6 +1,4 @@
-﻿using System;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Support.UI;
+﻿using OpenQA.Selenium;
 
 namespace XUnitTestProject1.Selenium
 {
@@ -28,37 +26,5 @@ namespace XUnitTestProject1.Selenium
         public IWebElement KomunikatSpan => Driver.FindElement(By.Id("cp_LabelKomunikat"));
         public IWebElement RezerwujButton => Driver.FindElement(By.Id("cp_btnZarejestruj"));
         //public IWebElement HomeLink => Driver.FindElement(By.LinkText("Home"));
-    }
-
-    public class MyElement
-    {
-        private By locator;
-        private IRegAppPage page;
-        private IWebDriver driver => page.Driver;
-
-        public IWebElement Element => driver.FindElement(locator);
-        //public bool Exists => IsElementPresent(locator);
-
-        public MyElement(IRegAppPage page, By locator)
-        {
-            this.page = page;
-            this.locator = locator;
-        }
-
-        public SelectElement AsSelect => new SelectElement(Element);
-
-        public bool Exists(int seconds = 3)
-        {
-            try
-            {
-                var wait = new WebDriverWait(driver, new TimeSpan(0, 0, 0, seconds));
-                wait.Until(ExpectedConditions.ElementIsVisible(locator));
-                //    .FindElement(locator);
-                return true;
-            }
-            catch(WebDriverTimeoutException tex){
-                return false;
-            }
-        }
     }
 }

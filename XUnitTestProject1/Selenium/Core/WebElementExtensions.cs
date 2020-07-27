@@ -5,13 +5,13 @@ namespace XUnitTestProject1.Selenium
 {
     public static class WebElementExtensions
     {
-        public static void ScrollIntoView(this IRegAppPage page, IWebElement element)
+        public static void ScrollIntoView(this IPage page, IWebElement element)
         {
             IJavaScriptExecutor js = ((IJavaScriptExecutor)page.Driver);
             js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
         }
 
-        public static void ScrollAndClick(this IRegAppPage page, IWebElement element)
+        public static void ScrollAndClick(this IPage page, IWebElement element)
         {
             page.ScrollIntoView(element);
 
