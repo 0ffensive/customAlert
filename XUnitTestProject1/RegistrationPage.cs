@@ -15,32 +15,15 @@ namespace XUnitTestProject1.Selenium
         {
             Driver.Navigate().GoToUrl(Url);
             //
-            //LokalizacjaDropDown.SelectByText(where);
-            Lokalizacja.AsSelect.SelectByText(where);
-            DzieciDropDown.SelectByText($"{dzieci}");
-            //StartButton.Click();
-            //this.ScrollAndClick(StartButton);
+            LokalizacjaDropDown.AsSelect.SelectByText(where);
+            DzieciDropDown.AsSelect.SelectByText($"{dzieci}");
         }
 
-        
-        //public IWebElement LokalizacjaDropDown => driver.FindElement(By.Id("cp_cbLokalizacja"));
-        //public IWebElement DzieciDropDown => driver.FindElement(By.Id("cp_ctrlDzieci"));
-        
-        //public IWebElement DniElement => Driver.FindElement(By.Id("cp_ctrlDni"));
-        //public bool DniExists => IsElementPresent(By.Id("cp_ctrlDni"));
-        public MyElement DniDropDown => new MyElement(this, By.Id("cp_ctrlDni"));
         public MyElement LokalizacjaDropDown => new MyElement(this, By.Id("cp_cbLokalizacja"));
-
-        //public IWebElement GodzinyDropDown => driver.FindElement(By.Id("cp_ctrlGodziny"));
-        //public SelectElement LokalizacjaDropDown => new SelectElement(Driver.FindElement(By.Id("cp_cbLokalizacja")));
 
         public MyElement DzieciDropDown => new MyElement(this, By.Id("cp_ctrlDzieci"));
         public MyElement DniDropDown => new MyElement(this, By.Id("cp_ctrlDni"));
         public MyElement GodzinyDropDown => new MyElement(this, By.Id("cp_ctrlGodziny"));
-        public SelectElement DzieciDropDown => new SelectElement(Driver.FindElement(By.Id("cp_ctrlDzieci")));
-        public SelectElement DniDropDown => new SelectElement(Driver.FindElement(By.Id("cp_ctrlDni")));
-        public SelectElement GodzinyDropDown => new SelectElement(Driver.FindElement(By.Id("cp_ctrlGodziny")));
-        //
 
         public IWebElement KomunikatSpan => Driver.FindElement(By.Id("cp_LabelKomunikat"));
         public IWebElement RezerwujButton => Driver.FindElement(By.Id("cp_btnZarejestruj"));
