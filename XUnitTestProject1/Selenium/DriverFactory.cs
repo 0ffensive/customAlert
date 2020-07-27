@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 using System.Net;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -44,7 +45,12 @@ namespace XUnitTestProject1.Selenium
             chromeOptions.AddArgument("no-sandbox");
 
             // Start maximised
-            chromeOptions.AddArgument("start-maximized");
+            //chromeOptions.AddArgument("start-maximized");
+            chromeOptions.AddArgument("start-minimized");
+
+            chromeOptions.AddArgument("disable-popup-blocking");
+            
+            chromeOptions.AddArgument("no-proxy-server");
 
             // Prevent error "Loading of unpacked extensions is disabled by the administrator"
             chromeOptions.AddAdditionalCapability("useAutomationExtension", false);
@@ -56,6 +62,8 @@ namespace XUnitTestProject1.Selenium
 
             var chromeDriver = new ChromeDriver(chromeDriverService, chromeOptions, TimeSpan.FromSeconds(Constants.Driver.TimeOut.WebDriverCommand));
             chromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Constants.Driver.TimeOut.FindWebElement);
+
+            chromeDriver.Manage().Window.Position = new Point(-2000, 0);
 
             return chromeDriver;
         }

@@ -2,6 +2,8 @@
 using System.IO;
 using System.Runtime.InteropServices;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Chrome;
+using OpenQA.Selenium.Remote;
 using Xunit;
 using Xunit.Abstractions;
 
@@ -26,6 +28,10 @@ namespace XUnitTestProject1.Selenium
             // Driver factory and web driver
             driverFactory = new DriverFactory();
             driver = driverFactory.CreateDriver();
+
+            //driver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Constants.Driver.TimeOut.FindWebElement);
+
+
 
             // Login pages
             //loginPage = new LoginPage(driver);

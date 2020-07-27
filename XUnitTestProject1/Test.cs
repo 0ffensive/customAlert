@@ -14,16 +14,40 @@ namespace XUnitTestProject1.Selenium
     {
         public Test(ITestOutputHelper output) : base(output) { }
 
-        string url1 = "https://secure.e-konsulat.gov.pl/Informacyjne/Placowka.aspx?IDPlacowki=159";
-        string url2 = "https://secure.e-konsulat.gov.pl/Wizyty/Paszportowe/RejestracjaTerminuWizytyPaszportowej.aspx?IDPlacowki=159";
+        string placowkaEdynburg = "https://secure.e-konsulat.gov.pl/Informacyjne/Placowka.aspx?IDPlacowki=159";
+        //string url2 = "https://secure.e-konsulat.gov.pl/Wizyty/Paszportowe/RejestracjaTerminuWizytyPaszportowej.aspx?IDPlacowki=159";
 
         [Fact]
         public void StartApplication()
         {
-            driver.Navigate().GoToUrl(url1);
-            driver.Navigate().GoToUrl(url2);
+            driver.Navigate().GoToUrl(placowkaEdynburg);
+            //driver.Navigate().GoToUrl(url2);
+            //var locationDdl = new SelectElement(driver.FindElement(By.Id("cp_cbLokalizacja")));
+            //locationDdl.SelectByText("Edynburg");
+            //var howManyPersonsDdl = new SelectElement(driver.FindElement(By.Id("cp_ctrlDzieci")));
+            //locationDdl.SelectByText("1");
+
+            RegistrationPage reg = new RegistrationPage(driver);
+            reg.Start("Edynburg");
+            string txt = reg.KomunikatSpan.Text;
+            bool exists = reg.Dni.Exists();
+            bool dis = reg.Lokalizacja.Element.Enabled;
+
+            if (exists)
+            {
+                reg.Dni.AsSelect.SelectByIndex(0);
+                reg.
+
+            }
+
+            //cp_LabelKomunikat
+            //cp_ctrlDni
+            //cp_ctrlGodziny
+            //
+            //driver.Wa
+
             string src = driver.PageSource;
-            Assert.True(src != null);
+            Assert.True(txt != null);
         }
 
         //public void OpenApplicationReturnedPage()

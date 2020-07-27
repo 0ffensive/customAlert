@@ -19,19 +19,19 @@ namespace XUnitTestProject1.Selenium
             action.MoveToElement(element).Click().Perform();
         }
 
-        public static void SelectAndContinue(this IRegAppPage page, IWebElement element)
-        {
-            // Scroll the webelement into view before clicking to avoid the action failing on mobile browsers
-            page.ScrollAndClick(element);
-            page.ContinueButton.Click();
-        }
+        //public static void SelectAndContinue(this IRegAppPage page, IWebElement element)
+        //{
+        //    // Scroll the webelement into view before clicking to avoid the action failing on mobile browsers
+        //    page.ScrollAndClick(element);
+        //    page.ContinueButton.Click();
+        //}
 
-        public static void SelectAndSubmit(this IRegAppPage page, IWebElement element)
-        {
-            // Scroll the webelement into view before clicking to avoid the action failing on mobile browsers
-            page.ScrollAndClick(element);
-            page.SubmitButton.Click();
-        }
+        //public static void SelectAndSubmit(this IRegAppPage page, IWebElement element)
+        //{
+        //    // Scroll the webelement into view before clicking to avoid the action failing on mobile browsers
+        //    page.ScrollAndClick(element);
+        //    page.SubmitButton.Click();
+        //}
 
         public static string Value(this IWebElement element)
         {

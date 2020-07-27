@@ -23,8 +23,8 @@
             public class TimeOut
             {
                 // Timeout in seconds
-                public const int FindWebElement = 30;
-                public const int WebDriverCommand = 120;
+                public const int FindWebElement = 5;
+                public const int WebDriverCommand = 12;
             }
         }
     }
