@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace XUnitTestProject1.Selenium
+namespace CustomAlertBoxDemo.Selenium.Core
 {
     public interface IPage
     {

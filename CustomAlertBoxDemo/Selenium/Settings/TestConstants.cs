@@ -1,4 +1,4 @@
-﻿namespace XUnitTestProject1.Selenium
+﻿namespace CustomAlertBoxDemo.Selenium.Settings
 {
     public partial class Constants
     {

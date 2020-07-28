@@ -1,15 +1,14 @@
 ﻿using System;
 using System.IO;
 using System.Runtime.InteropServices;
+using CustomAlertBoxDemo.Selenium.Settings;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Remote;
 using Xunit;
 using Xunit.Abstractions;
 
 #pragma warning disable 0168
 
-namespace XUnitTestProject1.Selenium
+namespace CustomAlertBoxDemo.Selenium.Core
 {
     public class TestBase : XunitContextBase, IDisposable
     {

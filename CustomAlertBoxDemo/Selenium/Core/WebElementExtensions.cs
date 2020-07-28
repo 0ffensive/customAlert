@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Interactions;
 
-namespace XUnitTestProject1.Selenium
+namespace CustomAlertBoxDemo.Selenium.Core
 {
     public static class WebElementExtensions
     {

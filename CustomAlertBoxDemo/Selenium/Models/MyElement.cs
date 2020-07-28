@@ -1,8 +1,9 @@
 ﻿using System;
+using CustomAlertBoxDemo.Selenium.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace XUnitTestProject1.Selenium
+namespace CustomAlertBoxDemo.Selenium.Models
 {
     public class MyElement
     {

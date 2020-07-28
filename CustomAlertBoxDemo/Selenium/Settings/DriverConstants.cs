@@ -1,4 +1,4 @@
-﻿namespace XUnitTestProject1.Selenium
+﻿namespace CustomAlertBoxDemo.Selenium.Settings
 {
     public partial class Constants
     {
@@ -24,7 +24,7 @@
             {
                 // Timeout in seconds
                 public const int FindWebElement = 5;
-                public const int WebDriverCommand = 12;
+                public const int WebDriverCommand = 30;
             }
         }
     }

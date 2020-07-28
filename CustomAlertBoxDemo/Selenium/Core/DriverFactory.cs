@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Drawing;
 using System.Net;
+using CustomAlertBoxDemo.Selenium.Settings;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 
 #pragma warning disable 0618
 
-namespace XUnitTestProject1.Selenium
+namespace CustomAlertBoxDemo.Selenium.Core
 {
     public partial class DriverFactory : IDisposable
     {
@@ -26,10 +27,10 @@ namespace XUnitTestProject1.Selenium
 
         public IWebDriver CreateDriver()
         {
-            return (Browser.ToUpperInvariant()) switch
+            switch (Browser.ToUpperInvariant()) 
             {
-                "WINDOWS CHROME" => CreateChromeDriver(),
-                _ => throw new ArgumentException($"{Browser} browser not yet implemented"),
+                case "WINDOWS CHROME": return CreateChromeDriver();
+                default: throw new ArgumentException($"{Browser} browser not yet implemented");
             };
         }
 
@@ -63,7 +64,7 @@ namespace XUnitTestProject1.Selenium
             var chromeDriver = new ChromeDriver(chromeDriverService, chromeOptions, TimeSpan.FromSeconds(Constants.Driver.TimeOut.WebDriverCommand));
             chromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Constants.Driver.TimeOut.FindWebElement);
 
-            chromeDriver.Manage().Window.Position = new Point(-2000, 0);
+            chromeDriver.Manage().Window.Position = new Point(-1500, 0);
 
             return chromeDriver;
         }

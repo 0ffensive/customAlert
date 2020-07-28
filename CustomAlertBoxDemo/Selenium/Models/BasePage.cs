@@ -1,6 +1,7 @@
-﻿using OpenQA.Selenium;
+﻿using CustomAlertBoxDemo.Selenium.Core;
+using OpenQA.Selenium;
 
-namespace XUnitTestProject1.Selenium
+namespace CustomAlertBoxDemo.Selenium.Models
 {
     public abstract class BasePage : IPage
     {

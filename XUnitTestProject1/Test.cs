@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Threading;
+using CustomAlertBoxDemo.Selenium;
+using CustomAlertBoxDemo.Selenium.Core;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using Xunit;
