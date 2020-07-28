@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
 using System.Media;
 using System.Text;
 using System.Threading;
@@ -29,7 +28,7 @@ namespace CustomAlertBoxDemo
         public Form1()
         {
             InitializeComponent();
-            this.Location = Screen.AllScreens[0].WorkingArea.Location;
+            
 
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.DoWork += backgroundWorker1_DoWork;
@@ -38,23 +37,29 @@ namespace CustomAlertBoxDemo
             
             progressBar1.Minimum = 0;
             progressBar1.Maximum = 5;
-            progressBar1.Value = 0;
+            progressBar1.Value = 1;
 
             timer1.Interval = 20 * 1000;
             timer1.Enabled = true;
             timer1.Start();
 
-            driverFactory = new DriverFactory();
-            driver = driverFactory.CreateDriver();
+            WindowExt.HalfSizeOnSecondaryMonitor(this);
 
-            reg = new RegistrationPage(driver);
-            if (!driver.Url.Contains("guid"))
+            Thread thread = new Thread(() =>
             {
-                reg.Start("Manchester");
-                //reg.Start("Edynburg");
-            }
+                driverFactory = new DriverFactory();
+                driver = driverFactory.CreateDriver();
 
-            this.backgroundWorker1.RunWorkerAsync();
+                reg = new RegistrationPage(driver);
+                if (!driver.Url.Contains("guid"))
+                {
+                    reg.Start("Manchester");
+                    //reg.Start("Edynburg");
+                }
+                this.backgroundWorker1.RunWorkerAsync();
+            });
+            thread.Priority = ThreadPriority.BelowNormal;
+            thread.Start();
         }
         ~Form1()
         {
@@ -119,9 +124,31 @@ namespace CustomAlertBoxDemo
             Form_Alert frm = new Form_Alert();
             frm.showAlert(msg,type);
         }
+        //private void button1_Click(object sender, EventArgs e)
+        //{
+        //    this.Alert("Success Alert",Form_Alert.enmType.Success);
+        //}
+
         private void button1_Click(object sender, EventArgs e)
         {
-            this.Alert("Success Alert",Form_Alert.enmType.Success);
+            Screen[] screens = Screen.AllScreens;
+            setFormLocation(this, screens[1]);
+        }
+
+        private void setFormLocation(Form form, Screen screen)
+        {
+            // first method
+            Rectangle bounds = screen.Bounds;
+            form.SetBounds(bounds.X, bounds.Y, bounds.Width, bounds.Height);
+
+            // second method
+            //Point location = screen.Bounds.Location;
+            //Size size = screen.Bounds.Size;
+
+            //form.Left = location.X;
+            //form.Top = location.Y;
+            //form.Width = size.Width;
+            //form.Height = size.Height;
         }
 
         private async void button2_Click(object sender, EventArgs e)

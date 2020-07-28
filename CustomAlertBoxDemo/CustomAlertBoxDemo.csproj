@@ -116,6 +116,7 @@
     <Compile Include="Selenium\Settings\DriverConstants.cs" />
     <Compile Include="Selenium\Settings\LocalSettings.cs" />
     <Compile Include="Selenium\Settings\TestConstants.cs" />
+    <Compile Include="WindowExt.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
