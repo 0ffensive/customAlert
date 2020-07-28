@@ -29,14 +29,20 @@ namespace CustomAlertBoxDemo
         public Form1()
         {
             InitializeComponent();
+            this.Location = Screen.AllScreens[0].WorkingArea.Location;
 
             backgroundWorker1.WorkerReportsProgress = true;
-            backgroundWorker1.DoWork += BackgroundWorker1_DoWork;
+            backgroundWorker1.DoWork += backgroundWorker1_DoWork;
             backgroundWorker1.ProgressChanged += BackgroundWorker1_ProgressChanged;
+            this.backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
             
             progressBar1.Minimum = 0;
             progressBar1.Maximum = 5;
             progressBar1.Value = 0;
+
+            timer1.Interval = 20 * 1000;
+            timer1.Enabled = true;
+            timer1.Start();
 
             driverFactory = new DriverFactory();
             driver = driverFactory.CreateDriver();
@@ -48,13 +54,7 @@ namespace CustomAlertBoxDemo
                 //reg.Start("Edynburg");
             }
 
-            BackgroundWorker1_DoWork(this, null);
-            button2_Click(this, null);
-            //timer1_Tick(this, null);
-            //
-            timer1.Interval = 20 * 1000;
-            timer1.Enabled = true;
-            timer1.Start();
+            this.backgroundWorker1.RunWorkerAsync();
         }
         ~Form1()
         {
@@ -63,10 +63,55 @@ namespace CustomAlertBoxDemo
             driverFactory.Dispose();
         }
 
+        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        {
+            // Do not access the form's BackgroundWorker reference directly.
+            // Instead, use the reference provided by the sender parameter.
+            BackgroundWorker bw = sender as BackgroundWorker;
+
+            // Extract the argument.
+            //int arg = (int)e.Argument;
+
+            // Start the time-consuming operation.
+            e.Result = TimeConsumingOperation(bw);
+
+            // If the operation was canceled by the user,
+            // set the DoWorkEventArgs.Cancel property to true.
+            if (bw.CancellationPending)
+            {
+                e.Cancel = true;
+            }
+        }
+
+        // This event handler demonstrates how to interpret
+        // the outcome of the asynchronous operation implemented
+        // in the DoWork event handler.
+        private void backgroundWorker1_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            if (e.Cancelled)
+            {
+                // The user canceled the operation.
+                MessageBox.Show("Operation was canceled");
+            }
+            else if (e.Error != null)
+            {
+                // There was an error during the operation.
+                string msg = String.Format("An error occurred: {0}", e.Error.Message);
+                MessageBox.Show(msg);
+            }
+            else
+            {
+                textBox1.Text += $"{e.Result}\r\n";
+            }
+        }
+
         private void BackgroundWorker1_ProgressChanged(object sender, ProgressChangedEventArgs e)
         {
-            //button1_Click(sender, e);
-            button2_Click(sender, e);
+            if (progressBar1.Maximum == progressBar1.Value)
+            {
+                progressBar1.Value = progressBar1.Minimum;
+            }
+            progressBar1.Value++;
         }
 
         public void Alert(string msg, Form_Alert.enmType type)
@@ -83,13 +128,7 @@ namespace CustomAlertBoxDemo
         {
             //this.Alert("Warning Alert", Form_Alert.enmType.Warning);
 
-            if (progressBar1.Maximum == progressBar1.Value)
-            {
-                progressBar1.Value = progressBar1.Minimum;
-            }
-            progressBar1.Value++;
-
-            textBox1.Text += $"{Komunikat}";
+            //textBox1.Text += $"{Komunikat}";
 
             //Scraper scraper = new Scraper();
             //string result = await scraper.ScrapeWebsite();
@@ -114,7 +153,7 @@ namespace CustomAlertBoxDemo
             backgroundWorker1.ReportProgress(counter++);
         }
 
-        private void BackgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private string TimeConsumingOperation(BackgroundWorker bw)
         {
             string txt = "Blad";
             try
@@ -137,10 +176,10 @@ namespace CustomAlertBoxDemo
             }
             finally
             {
-                string time = DateTime.Now.ToShortTimeString();
-                Komunikat = $"{time}: {txt}\r\n";
+                Komunikat = $"{DateTime.Now:T}: {txt}";
             }
-            
+
+            return Komunikat;
         }
     }
 }
