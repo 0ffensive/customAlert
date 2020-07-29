@@ -33,5 +33,7 @@ namespace CustomAlertBoxDemo.Selenium.Models
                 return false;
             }
         }
+
+        public bool IsEnabled => Element.Enabled;
     }
 }

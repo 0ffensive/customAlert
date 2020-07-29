@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using CustomAlertBoxDemo.Selenium.Core;
 using CustomAlertBoxDemo.Selenium.Models;
 using OpenQA.Selenium;
 
@@ -35,11 +36,13 @@ namespace CustomAlertBoxDemo.Selenium
             DzieciDropDown.AsSelect.SelectByText($"{dzieci}");
         }
 
-        public void ReloadCurrentPage()
+        public void ReloadCurrentPage(int selectDzieci = 1)
         {
             string current = Driver.Url;
             Driver.Navigate().GoToUrl(current);
-            DzieciDropDown.AsSelect.SelectByText($"1");
+            
+            this.ScrollToBottom();
+            DzieciDropDown.AsSelect.SelectByText($"{selectDzieci}");
         }
 
         public void Rezerwuj()

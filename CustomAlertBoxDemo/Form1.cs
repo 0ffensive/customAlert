@@ -9,6 +9,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using CustomAlertBoxDemo;
+using CustomAlertBoxDemo.Controls;
 using CustomAlertBoxDemo.Selenium;
 using CustomAlertBoxDemo.Selenium.Core;
 using OpenQA.Selenium;
@@ -28,38 +29,36 @@ namespace CustomAlertBoxDemo
         public Form1()
         {
             InitializeComponent();
-            
+
+            grpTimer.Paint += PaintBorderlessGroupBox;
+
+            timePickerFrom.Format = DateTimePickerFormat.Custom;
+            timePickerFrom.CustomFormat = "HH:mm"; // Only use hours and minutes
+            timePickerFrom.ShowUpDown = true;
 
             backgroundWorker1.WorkerReportsProgress = true;
             backgroundWorker1.DoWork += backgroundWorker1_DoWork;
             backgroundWorker1.ProgressChanged += BackgroundWorker1_ProgressChanged;
-            this.backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
+            backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
             
             progressBar1.Minimum = 0;
             progressBar1.Maximum = 5;
             progressBar1.Value = 1;
 
-            timer1.Interval = 20 * 1000;
-            timer1.Enabled = true;
-            timer1.Start();
+            lastChecked = chbManchester;
+
+            timer1.Enabled = false;
+            txbFrequency_Leave(this, null);
+            //timer1.Interval = GetFrequencySeconds() * 1000;
+            //timer1.Start();
 
             WindowExt.HalfSizeOnSecondaryMonitor(this);
 
-            Thread thread = new Thread(() =>
+            if (IsTimeRight)
             {
-                driverFactory = new DriverFactory();
-                driver = driverFactory.CreateDriver();
-
-                reg = new RegistrationPage(driver);
-                if (!driver.Url.Contains("guid"))
-                {
-                    reg.Start("Manchester");
-                    //reg.Start("Edynburg");
-                }
-                this.backgroundWorker1.RunWorkerAsync();
-            });
-            thread.Priority = ThreadPriority.BelowNormal;
-            thread.Start();
+                KickOffSeleniumInBackground();
+                StartTimer();
+            }
         }
         ~Form1()
         {
@@ -67,6 +66,57 @@ namespace CustomAlertBoxDemo
             driver.Dispose();
             driverFactory.Dispose();
         }
+
+        private int GetFrequencySeconds()
+        {
+            if (Int32.TryParse(txbFrequency.Text, out int result))
+                return result;
+            else 
+                return 20;
+        }
+
+        private void PaintBorderlessGroupBox(object sender, PaintEventArgs p)
+        {
+            GroupBox box = (GroupBox)sender;
+            p.Graphics.Clear(SystemColors.Control);
+
+            //box.ForeColor = timer1.Enabled ? Color.Green : Color.DarkRed;
+            var brush = timer1.Enabled ? Brushes.Green : Brushes.DarkRed;
+            p.Graphics.DrawString(box.Text, box.Font, brush, 0, 0);
+        }
+
+        private void KickOffSeleniumInBackground()
+        {
+            Thread thread = new Thread(() =>
+            {
+                KickOffSelenium();
+                Start_TimeConsumingOperation();
+                //backgroundWorker1.RunWorkerAsync();
+            });
+            thread.Priority = ThreadPriority.BelowNormal;
+            thread.Start();
+        }
+
+        private void KickOffSelenium()
+        {
+            InitSelenium();
+            StartBrowsingLocation();
+        }
+
+        private void InitSelenium()
+        {
+            driverFactory = new DriverFactory();
+            driver = driverFactory.CreateDriver();
+            //
+            var screen = WindowExt.GetSecondaryScreen().WorkingArea;
+            driver.Manage().Window.Size = new Size(screen.Width / 2, screen.Height);
+            reg = new RegistrationPage(driver);
+        }
+
+        private void StartBrowsingLocation() => reg.Start(GetSelectedLocation);
+        private string GetSelectedLocation => chbEdynburg.Checked ? chbEdynburg.Text : chbManchester.Text;
+        private bool IsTimeRight => DateTime.Now.TimeOfDay >= timePickerFrom.Value.TimeOfDay 
+                                    && DateTime.Now.TimeOfDay <= timePickerTo.Value.TimeOfDay;
 
         private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
@@ -106,7 +156,7 @@ namespace CustomAlertBoxDemo
             }
             else
             {
-                textBox1.Text += $"{e.Result}\r\n";
+                textBox1.AppendText($"{e.Result}\r\n");
             }
         }
 
@@ -173,6 +223,11 @@ namespace CustomAlertBoxDemo
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            Start_TimeConsumingOperation();
+        }
+
+        private void Start_TimeConsumingOperation()
+        {
             if(backgroundWorker1.IsBusy)
                 return;
 
@@ -189,13 +244,15 @@ namespace CustomAlertBoxDemo
                 txt = reg.KomunikatSpan.Text;
 
                 bool exists = reg.DniDropDown.Exists();
-                if (exists)
+                if (exists && reg.DniDropDown.IsEnabled)
                 {
                     timer1.Enabled = false;
                     SystemSounds.Exclamation.Play();
                     txt = $"REZERWACJA";
                     reg.Rezerwuj();
                 }
+
+                reg.ScrollToBottom();
             }
             catch (Exception exception)
             {
@@ -207,6 +264,89 @@ namespace CustomAlertBoxDemo
             }
 
             return Komunikat;
+        }
+
+        //We need this to hold the last checked CheckBox
+        private CheckBox lastChecked;
+
+        private void chk_Click(object sender, EventArgs e)
+        {
+            CheckBox activeCheckBox = sender as CheckBox;
+
+            if(activeCheckBox != lastChecked && lastChecked != null) 
+                lastChecked.Checked = false;
+
+            lastChecked = activeCheckBox.Checked ? activeCheckBox : null;
+
+            CheckBoxClicked(activeCheckBox);
+        }
+
+        private void CheckBoxClicked(CheckBox activeCheckBox)
+        {
+            //set times
+            if (activeCheckBox.Text == "Edynburg")
+            {
+                timePickerFrom.Value = new DateTime(2020, 1, 1,19, 45, 0);
+                timePickerTo.Value = new DateTime(2020, 1, 1,20, 20, 0);
+            }
+            else
+            {
+                timePickerFrom.Value = new DateTime(2020, 1, 1,8, 45, 0);
+                timePickerTo.Value = new DateTime(2020, 1, 1,9, 20, 0);
+            }
+
+            if (timer1.Enabled || IsTimeRight)
+            {
+                StopTimer();
+                //KickOffSelenium();
+                StartBrowsingLocation();
+                //btnTimer_Click(this, null);
+                StartTimer();
+            }
+        }
+
+        private void StartTimer()
+        {
+            timer1.Enabled = true;
+            timer1.Start();
+            
+        }
+
+        private void StopTimer()
+        {
+            timer1.Stop();
+            timer1.Enabled = false;
+        }
+
+        private void ToggleTimer()
+        {
+            if (timer1.Enabled)
+                StopTimer();
+            else
+                StartTimer();
+        }
+
+        private void btnTimer_Click(object sender, EventArgs e)
+        {
+            if (driver == null)
+            {
+                InitSelenium();
+            }
+
+            if (!driver.Url.Contains("guid"))
+            {
+                StartBrowsingLocation();
+                backgroundWorker1.RunWorkerAsync();
+            }
+
+            ToggleTimer();
+
+            grpTimer.Refresh();
+        }
+
+        private void txbFrequency_Leave(object sender, EventArgs e)
+        {
+            timer1.Interval = GetFrequencySeconds() * 1000;
         }
     }
 }

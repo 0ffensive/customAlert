@@ -11,16 +11,15 @@ namespace CustomAlertBoxDemo
         {
             form.StartPosition = FormStartPosition.Manual;
 
-            var secondaryScreen = Screen.AllScreens.FirstOrDefault(s => !s.Primary);
+            var secondaryScreen = GetSecondaryScreen();
 
-            if (secondaryScreen != null)
-            {
-                SetFormSizeToHalfOfScreen(form, secondaryScreen);
-            }
-            else
-            {
-                SetFormSizeToHalfOfScreen(form, Screen.AllScreens.First());
-            }
+            SetFormSizeToHalfOfScreen(form, secondaryScreen);
+        }
+
+        public static Screen GetSecondaryScreen()
+        {
+            return Screen.AllScreens.FirstOrDefault(s => !s.Primary)
+                ?? Screen.AllScreens.First();
         }
 
         private static void SetFormSizeToHalfOfScreen(Form form, Screen screen)
@@ -32,7 +31,7 @@ namespace CustomAlertBoxDemo
             var workingArea = screen.WorkingArea;
             form.Width = workingArea.Width / 2;
 
-            form.Left = workingArea.Left + form.Width + 5;
+            form.Left = workingArea.Left + form.Width;
             form.Top = workingArea.Top;
             form.Height = workingArea.Height;
         }

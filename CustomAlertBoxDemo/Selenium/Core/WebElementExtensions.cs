@@ -9,6 +9,17 @@ namespace CustomAlertBoxDemo.Selenium.Core
         {
             IJavaScriptExecutor js = ((IJavaScriptExecutor)page.Driver);
             js.ExecuteScript("arguments[0].scrollIntoView(true);", element);
+            //js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+        }
+
+        public static void ScrollToBottom(this IPage page)
+        {
+            //Does not work
+            //IJavaScriptExecutor js = ((IJavaScriptExecutor)page.Driver);
+            //js.ExecuteScript("window.scrollTo(0, document.body.scrollHeight)");
+
+            Actions actions = new Actions(page.Driver);
+            actions.KeyDown(Keys.Control).SendKeys(Keys.End).Perform();
         }
 
         public static void ScrollAndClick(this IPage page, IWebElement element)
