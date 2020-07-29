@@ -88,16 +88,22 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controls\Class1.cs" />
+    <Compile Include="Controls\ObservableProperty.cs" />
     <Compile Include="Controls\MyGroupBox.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Controls\FormsHelper.cs" />
-    <Compile Include="Form1.cs">
+    <Compile Include="Forms\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
+    <Compile Include="Forms\Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms\Form1.Events.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\Form1.Init.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Include="Form_Alert.cs">
       <SubType>Form</SubType>
@@ -122,7 +128,7 @@
     <Compile Include="Selenium\Settings\LocalSettings.cs" />
     <Compile Include="Selenium\Settings\TestConstants.cs" />
     <Compile Include="WindowExt.cs" />
-    <EmbeddedResource Include="Form1.resx">
+    <EmbeddedResource Include="Forms\Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Form_Alert.resx">

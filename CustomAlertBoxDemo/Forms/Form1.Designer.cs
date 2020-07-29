@@ -1,4 +1,4 @@
-﻿namespace CustomAlertBoxDemo
+﻿namespace CustomAlertBoxDemo.Forms
 {
     partial class Form1
     {
@@ -32,6 +32,7 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.lblCounter = new System.Windows.Forms.Label();
             this.lblCheck = new System.Windows.Forms.Label();
             this.grpTimer = new System.Windows.Forms.GroupBox();
             this.btnTimer = new System.Windows.Forms.Button();
@@ -39,7 +40,7 @@
             this.timePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.button3 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grpLokacja = new System.Windows.Forms.GroupBox();
             this.chbEdynburg = new System.Windows.Forms.CheckBox();
             this.chbManchester = new System.Windows.Forms.CheckBox();
             this.txbFrequency = new System.Windows.Forms.TextBox();
@@ -47,14 +48,13 @@
             this.button2 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
             this.textBox1 = new System.Windows.Forms.TextBox();
-            this.lblCounter = new System.Windows.Forms.Label();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.grpTimer.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.grpLokacja.SuspendLayout();
             this.SuspendLayout();
             // 
             // timer1
@@ -74,7 +74,7 @@
             this.splitContainer1.Panel1.Controls.Add(this.grpTimer);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
             this.splitContainer1.Panel1.Controls.Add(this.button1);
-            this.splitContainer1.Panel1.Controls.Add(this.groupBox1);
+            this.splitContainer1.Panel1.Controls.Add(this.grpLokacja);
             this.splitContainer1.Panel1.Controls.Add(this.txbFrequency);
             this.splitContainer1.Panel1.Controls.Add(this.button4);
             this.splitContainer1.Panel1.Controls.Add(this.button2);
@@ -87,12 +87,22 @@
             this.splitContainer1.SplitterDistance = 291;
             this.splitContainer1.TabIndex = 2;
             // 
+            // lblCounter
+            // 
+            this.lblCounter.AutoSize = true;
+            this.lblCounter.ForeColor = System.Drawing.Color.Red;
+            this.lblCounter.Location = new System.Drawing.Point(217, 13);
+            this.lblCounter.Name = "lblCounter";
+            this.lblCounter.Size = new System.Drawing.Size(32, 23);
+            this.lblCounter.TabIndex = 5;
+            this.lblCounter.Text = "20";
+            // 
             // lblCheck
             // 
             this.lblCheck.AutoSize = true;
             this.lblCheck.Location = new System.Drawing.Point(12, 13);
             this.lblCheck.Name = "lblCheck";
-            this.lblCheck.Size = new System.Drawing.Size(108, 21);
+            this.lblCheck.Size = new System.Drawing.Size(136, 23);
             this.lblCheck.TabIndex = 2;
             this.lblCheck.Text = "Check every";
             // 
@@ -125,7 +135,7 @@
             this.timePickerTo.Location = new System.Drawing.Point(118, 31);
             this.timePickerTo.Name = "timePickerTo";
             this.timePickerTo.ShowUpDown = true;
-            this.timePickerTo.Size = new System.Drawing.Size(76, 27);
+            this.timePickerTo.Size = new System.Drawing.Size(76, 32);
             this.timePickerTo.TabIndex = 9;
             this.timePickerTo.Value = new System.DateTime(2020, 7, 28, 9, 20, 0, 0);
             // 
@@ -136,7 +146,7 @@
             this.timePickerFrom.Location = new System.Drawing.Point(7, 31);
             this.timePickerFrom.Name = "timePickerFrom";
             this.timePickerFrom.ShowUpDown = true;
-            this.timePickerFrom.Size = new System.Drawing.Size(80, 27);
+            this.timePickerFrom.Size = new System.Drawing.Size(80, 32);
             this.timePickerFrom.TabIndex = 8;
             this.timePickerFrom.Value = new System.DateTime(2020, 7, 28, 8, 45, 0, 0);
             // 
@@ -168,16 +178,16 @@
             this.button1.UseVisualStyleBackColor = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // groupBox1
+            // grpLokacja
             // 
-            this.groupBox1.Controls.Add(this.chbEdynburg);
-            this.groupBox1.Controls.Add(this.chbManchester);
-            this.groupBox1.Location = new System.Drawing.Point(16, 50);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(195, 114);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Lokacja";
+            this.grpLokacja.Controls.Add(this.chbEdynburg);
+            this.grpLokacja.Controls.Add(this.chbManchester);
+            this.grpLokacja.Location = new System.Drawing.Point(16, 50);
+            this.grpLokacja.Name = "grpLokacja";
+            this.grpLokacja.Size = new System.Drawing.Size(195, 114);
+            this.grpLokacja.TabIndex = 3;
+            this.grpLokacja.TabStop = false;
+            this.grpLokacja.Text = "Lokacja";
             // 
             // chbEdynburg
             // 
@@ -186,7 +196,7 @@
             this.chbEdynburg.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbEdynburg.Location = new System.Drawing.Point(7, 66);
             this.chbEdynburg.Name = "chbEdynburg";
-            this.chbEdynburg.Size = new System.Drawing.Size(104, 25);
+            this.chbEdynburg.Size = new System.Drawing.Size(125, 27);
             this.chbEdynburg.TabIndex = 1;
             this.chbEdynburg.Text = "Edynburg";
             this.chbEdynburg.UseVisualStyleBackColor = true;
@@ -198,7 +208,7 @@
             this.chbManchester.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbManchester.Location = new System.Drawing.Point(7, 32);
             this.chbManchester.Name = "chbManchester";
-            this.chbManchester.Size = new System.Drawing.Size(123, 25);
+            this.chbManchester.Size = new System.Drawing.Size(147, 27);
             this.chbManchester.TabIndex = 0;
             this.chbManchester.Text = "Manchester";
             this.chbManchester.UseVisualStyleBackColor = true;
@@ -208,7 +218,7 @@
             // 
             this.txbFrequency.Location = new System.Drawing.Point(155, 10);
             this.txbFrequency.Name = "txbFrequency";
-            this.txbFrequency.Size = new System.Drawing.Size(56, 27);
+            this.txbFrequency.Size = new System.Drawing.Size(56, 32);
             this.txbFrequency.TabIndex = 1;
             this.txbFrequency.Text = "20";
             this.txbFrequency.Leave += new System.EventHandler(this.txbFrequency_Leave);
@@ -262,16 +272,6 @@
             this.textBox1.Size = new System.Drawing.Size(593, 415);
             this.textBox1.TabIndex = 0;
             // 
-            // lblCounter
-            // 
-            this.lblCounter.AutoSize = true;
-            this.lblCounter.ForeColor = System.Drawing.Color.Red;
-            this.lblCounter.Location = new System.Drawing.Point(217, 13);
-            this.lblCounter.Name = "lblCounter";
-            this.lblCounter.Size = new System.Drawing.Size(28, 21);
-            this.lblCounter.TabIndex = 5;
-            this.lblCounter.Text = "20";
-            // 
             // timer2
             // 
             this.timer2.Interval = 1000;
@@ -293,8 +293,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.grpTimer.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.grpLokacja.ResumeLayout(false);
+            this.grpLokacja.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -318,7 +318,7 @@
         private System.Windows.Forms.GroupBox grpTimer;
         private System.Windows.Forms.DateTimePicker timePickerTo;
         private System.Windows.Forms.Button btnTimer;
-        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.GroupBox grpLokacja;
         private System.Windows.Forms.Label lblCounter;
         private System.Windows.Forms.Timer timer2;
     }
