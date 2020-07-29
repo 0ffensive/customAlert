@@ -10,6 +10,7 @@ namespace CustomAlertBoxDemo.Selenium
         string placowkaEdynburg = "https://secure.e-konsulat.gov.pl/Informacyjne/Placowka.aspx?IDPlacowki=159";
         string placowkaManchester = "https://secure.e-konsulat.gov.pl/Informacyjne/Placowka.aspx?IDPlacowki=115";
         string rezerwacja = "https://secure.e-konsulat.gov.pl/Wizyty/Paszportowe/RejestracjaTerminuWizytyPaszportowej.aspx?IDPlacowki=";
+        public string Lokalizacja { get; protected set; }
 
         public RegistrationPage(IWebDriver driver) : base(driver)
         {
@@ -17,9 +18,11 @@ namespace CustomAlertBoxDemo.Selenium
 
         string GetPlacowkaId(string input) => input.Substring(input.Length - 3);
 
-        public void Start(string where, int dzieci = 1)
+        public void Start(string where)
         {
-            if (where == "Edynburg") // == "Edynburg"
+            Lokalizacja = where;
+
+            if (Lokalizacja == "Edynburg") // == "Edynburg"
                 Url = placowkaEdynburg;
             else
                 Url = placowkaManchester;
@@ -28,21 +31,21 @@ namespace CustomAlertBoxDemo.Selenium
             Driver.Navigate().GoToUrl(Url);
             Driver.Navigate().GoToUrl(rezerwacja + idPlacowki);
             
-            if (where == "Edynburg")
+            //DzieciDropDown.AsSelect.SelectByText($"{dzieci}");
+        }
+
+        public void ReloadCurrentPage(int dzieci = 1)
+        {
+            string current = Driver.Url;
+            Driver.Navigate().GoToUrl(current);
+
+            if (Lokalizacja == "Edynburg")
             {
                 LokalizacjaDropDown.AsSelect.SelectByText("Edynburg");
             }
 
-            DzieciDropDown.AsSelect.SelectByText($"{dzieci}");
-        }
-
-        public void ReloadCurrentPage(int selectDzieci = 1)
-        {
-            string current = Driver.Url;
-            Driver.Navigate().GoToUrl(current);
-            
             this.ScrollToBottom();
-            DzieciDropDown.AsSelect.SelectByText($"{selectDzieci}");
+            DzieciDropDown.AsSelect.SelectByText($"{dzieci}");
         }
 
         public void Rezerwuj()
@@ -60,6 +63,7 @@ namespace CustomAlertBoxDemo.Selenium
 
         public IWebElement KomunikatSpan => Driver.FindElement(By.Id("cp_LabelKomunikat"));
         public IWebElement RezerwujButton => Driver.FindElement(By.Id("cp_btnZarejestruj"));
+        
         //public IWebElement HomeLink => Driver.FindElement(By.LinkText("Home"));
     }
 }

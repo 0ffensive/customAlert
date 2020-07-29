@@ -32,21 +32,23 @@
             this.backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.lblCheck = new System.Windows.Forms.Label();
             this.grpTimer = new System.Windows.Forms.GroupBox();
             this.btnTimer = new System.Windows.Forms.Button();
             this.timePickerTo = new System.Windows.Forms.DateTimePicker();
             this.timePickerFrom = new System.Windows.Forms.DateTimePicker();
             this.button3 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.chbEdynburg = new System.Windows.Forms.CheckBox();
             this.chbManchester = new System.Windows.Forms.CheckBox();
+            this.txbFrequency = new System.Windows.Forms.TextBox();
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
-            this.txbFrequency = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.lblCounter = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -67,6 +69,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.lblCounter);
             this.splitContainer1.Panel1.Controls.Add(this.lblCheck);
             this.splitContainer1.Panel1.Controls.Add(this.grpTimer);
             this.splitContainer1.Panel1.Controls.Add(this.button3);
@@ -84,33 +87,12 @@
             this.splitContainer1.SplitterDistance = 291;
             this.splitContainer1.TabIndex = 2;
             // 
-            // progressBar1
-            // 
-            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.progressBar1.Location = new System.Drawing.Point(17, 13);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(593, 23);
-            this.progressBar1.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(17, 50);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBox1.Size = new System.Drawing.Size(593, 415);
-            this.textBox1.TabIndex = 0;
-            // 
             // lblCheck
             // 
             this.lblCheck.AutoSize = true;
             this.lblCheck.Location = new System.Drawing.Point(12, 13);
             this.lblCheck.Name = "lblCheck";
-            this.lblCheck.Size = new System.Drawing.Size(136, 23);
+            this.lblCheck.Size = new System.Drawing.Size(108, 21);
             this.lblCheck.TabIndex = 2;
             this.lblCheck.Text = "Check every";
             // 
@@ -143,7 +125,7 @@
             this.timePickerTo.Location = new System.Drawing.Point(118, 31);
             this.timePickerTo.Name = "timePickerTo";
             this.timePickerTo.ShowUpDown = true;
-            this.timePickerTo.Size = new System.Drawing.Size(76, 32);
+            this.timePickerTo.Size = new System.Drawing.Size(76, 27);
             this.timePickerTo.TabIndex = 9;
             this.timePickerTo.Value = new System.DateTime(2020, 7, 28, 9, 20, 0, 0);
             // 
@@ -154,7 +136,7 @@
             this.timePickerFrom.Location = new System.Drawing.Point(7, 31);
             this.timePickerFrom.Name = "timePickerFrom";
             this.timePickerFrom.ShowUpDown = true;
-            this.timePickerFrom.Size = new System.Drawing.Size(80, 32);
+            this.timePickerFrom.Size = new System.Drawing.Size(80, 27);
             this.timePickerFrom.TabIndex = 8;
             this.timePickerFrom.Value = new System.DateTime(2020, 7, 28, 8, 45, 0, 0);
             // 
@@ -172,6 +154,20 @@
             this.button3.UseVisualStyleBackColor = false;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.SeaGreen;
+            this.button1.FlatAppearance.BorderSize = 0;
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(11, 416);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(119, 58);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Success";
+            this.button1.UseVisualStyleBackColor = false;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.chbEdynburg);
@@ -186,9 +182,11 @@
             // chbEdynburg
             // 
             this.chbEdynburg.AutoSize = true;
+            this.chbEdynburg.Checked = true;
+            this.chbEdynburg.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbEdynburg.Location = new System.Drawing.Point(7, 66);
             this.chbEdynburg.Name = "chbEdynburg";
-            this.chbEdynburg.Size = new System.Drawing.Size(125, 27);
+            this.chbEdynburg.Size = new System.Drawing.Size(104, 25);
             this.chbEdynburg.TabIndex = 1;
             this.chbEdynburg.Text = "Edynburg";
             this.chbEdynburg.UseVisualStyleBackColor = true;
@@ -197,16 +195,23 @@
             // chbManchester
             // 
             this.chbManchester.AutoSize = true;
-            this.chbManchester.Checked = true;
-            this.chbManchester.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbManchester.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbManchester.Location = new System.Drawing.Point(7, 32);
             this.chbManchester.Name = "chbManchester";
-            this.chbManchester.Size = new System.Drawing.Size(147, 27);
+            this.chbManchester.Size = new System.Drawing.Size(123, 25);
             this.chbManchester.TabIndex = 0;
             this.chbManchester.Text = "Manchester";
             this.chbManchester.UseVisualStyleBackColor = true;
             this.chbManchester.CheckedChanged += new System.EventHandler(this.chk_Click);
+            // 
+            // txbFrequency
+            // 
+            this.txbFrequency.Location = new System.Drawing.Point(155, 10);
+            this.txbFrequency.Name = "txbFrequency";
+            this.txbFrequency.Size = new System.Drawing.Size(56, 27);
+            this.txbFrequency.TabIndex = 1;
+            this.txbFrequency.Text = "20";
+            this.txbFrequency.Leave += new System.EventHandler(this.txbFrequency_Leave);
             // 
             // button4
             // 
@@ -236,28 +241,41 @@
             this.button2.UseVisualStyleBackColor = false;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
-            // txbFrequency
+            // progressBar1
             // 
-            this.txbFrequency.Location = new System.Drawing.Point(155, 10);
-            this.txbFrequency.Name = "txbFrequency";
-            this.txbFrequency.Size = new System.Drawing.Size(56, 32);
-            this.txbFrequency.TabIndex = 1;
-            this.txbFrequency.Text = "11";
-            this.txbFrequency.Leave += new System.EventHandler(this.txbFrequency_Leave);
+            this.progressBar1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.progressBar1.Location = new System.Drawing.Point(17, 13);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(593, 23);
+            this.progressBar1.TabIndex = 1;
             // 
-            // button1
+            // textBox1
             // 
-            this.button1.BackColor = System.Drawing.Color.SeaGreen;
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(11, 416);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(119, 58);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Success";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox1.Location = new System.Drawing.Point(17, 50);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.textBox1.Size = new System.Drawing.Size(593, 415);
+            this.textBox1.TabIndex = 0;
+            // 
+            // lblCounter
+            // 
+            this.lblCounter.AutoSize = true;
+            this.lblCounter.ForeColor = System.Drawing.Color.Red;
+            this.lblCounter.Location = new System.Drawing.Point(217, 13);
+            this.lblCounter.Name = "lblCounter";
+            this.lblCounter.Size = new System.Drawing.Size(28, 21);
+            this.lblCounter.TabIndex = 5;
+            this.lblCounter.Text = "20";
+            // 
+            // timer2
+            // 
+            this.timer2.Interval = 1000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
             // 
             // Form1
             // 
@@ -301,6 +319,8 @@
         private System.Windows.Forms.DateTimePicker timePickerTo;
         private System.Windows.Forms.Button btnTimer;
         private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label lblCounter;
+        private System.Windows.Forms.Timer timer2;
     }
 }
 

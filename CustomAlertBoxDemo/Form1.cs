@@ -19,6 +19,7 @@ namespace CustomAlertBoxDemo
     public partial class Form1 : Form
     {
         private int counter = 0;
+        int seconds = 0;
         public static string Komunikat;
         public bool Rezerwacja { get; set; }
 
@@ -48,7 +49,9 @@ namespace CustomAlertBoxDemo
             lastChecked = chbManchester;
 
             timer1.Enabled = false;
+            seconds = GetFrequencySeconds();
             txbFrequency_Leave(this, null);
+
             //timer1.Interval = GetFrequencySeconds() * 1000;
             //timer1.Start();
 
@@ -110,6 +113,10 @@ namespace CustomAlertBoxDemo
             //
             var screen = WindowExt.GetSecondaryScreen().WorkingArea;
             driver.Manage().Window.Size = new Size(screen.Width / 2, screen.Height);
+
+            if (Screen.AllScreens.Length > 1)
+                driver.Manage().Window.Position = new Point(-1500, 0);
+
             reg = new RegistrationPage(driver);
         }
 
@@ -241,16 +248,21 @@ namespace CustomAlertBoxDemo
             try
             {
                 reg.ReloadCurrentPage();
-                txt = reg.KomunikatSpan.Text;
-
+                
                 bool exists = reg.DniDropDown.Exists();
                 if (exists && reg.DniDropDown.IsEnabled)
                 {
                     timer1.Enabled = false;
                     SystemSounds.Exclamation.Play();
+
                     txt = $"REZERWACJA";
+                    Komunikat = $"{DateTime.Now:T}: {txt}";
+
+                    reg.ScrollToBottom();
                     reg.Rezerwuj();
                 }
+
+                txt = reg.KomunikatSpan.Text;
 
                 reg.ScrollToBottom();
             }
@@ -278,8 +290,11 @@ namespace CustomAlertBoxDemo
 
             lastChecked = activeCheckBox.Checked ? activeCheckBox : null;
 
-            CheckBoxClicked(activeCheckBox);
-        }
+            if(activeCheckBox.Checked)
+            {
+                CheckBoxClicked(activeCheckBox);
+            }
+        } 
 
         private void CheckBoxClicked(CheckBox activeCheckBox)
         {
@@ -298,7 +313,10 @@ namespace CustomAlertBoxDemo
             if (timer1.Enabled || IsTimeRight)
             {
                 StopTimer();
-                //KickOffSelenium();
+                if (driver == null)
+                {
+                    KickOffSelenium();
+                }
                 StartBrowsingLocation();
                 //btnTimer_Click(this, null);
                 StartTimer();
@@ -309,7 +327,12 @@ namespace CustomAlertBoxDemo
         {
             timer1.Enabled = true;
             timer1.Start();
-            
+
+            if(!timer2.Enabled)
+            {
+                timer2.Enabled = true;
+                timer2.Start();
+            }
         }
 
         private void StopTimer()
@@ -346,7 +369,27 @@ namespace CustomAlertBoxDemo
 
         private void txbFrequency_Leave(object sender, EventArgs e)
         {
+            //StopTimer();
             timer1.Interval = GetFrequencySeconds() * 1000;
+            timer2.Stop();
+            seconds = GetFrequencySeconds();
+            lblCounter.Text = seconds.ToString();
+            timer2.Start();
+            //StartTimer();
+        }
+
+        
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (!timer1.Enabled)
+                return;
+
+            seconds--;
+            if(seconds < 0)
+            {
+                seconds = GetFrequencySeconds();
+            }
+            lblCounter.Text = seconds.ToString();
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Net;
+using System.Windows.Forms;
 using CustomAlertBoxDemo.Selenium.Settings;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
@@ -64,7 +65,7 @@ namespace CustomAlertBoxDemo.Selenium.Core
             var chromeDriver = new ChromeDriver(chromeDriverService, chromeOptions, TimeSpan.FromSeconds(Constants.Driver.TimeOut.WebDriverCommand));
             chromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Constants.Driver.TimeOut.FindWebElement);
 
-            chromeDriver.Manage().Window.Position = new Point(-1500, 0);
+            
 
             return chromeDriver;
         }
