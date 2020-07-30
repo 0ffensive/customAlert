@@ -1,12 +1,15 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Media;
 using System.Threading;
 using System.Windows.Forms;
+using System.Windows.Media;
 using CustomAlertBoxDemo.Selenium;
 using CustomAlertBoxDemo.Selenium.Core;
 using OpenQA.Selenium;
+using Color = System.Drawing.Color;
 
 namespace CustomAlertBoxDemo.Forms
 {
@@ -16,7 +19,14 @@ namespace CustomAlertBoxDemo.Forms
         private string GetSelectedLocation => chbEdynburg.Checked ? chbEdynburg.Text : chbManchester.Text;
         private bool IsTimeRight => DateTime.Now.TimeOfDay >= timePickerFrom.Value.TimeOfDay 
                                     && DateTime.Now.TimeOfDay <= timePickerTo.Value.TimeOfDay;
+        
+        private MediaPlayer mediaPlayer = new MediaPlayer();
 
+        private void PlayAlarm()
+        {
+            mediaPlayer.Open(new Uri($"{Directory.GetCurrentDirectory()}\\Resources\\alarm1.mp3"));
+            mediaPlayer.Play();
+        }
         private int GetFrequencySeconds()
         {
             if (Int32.TryParse(txbFrequency.Text, out int result))
@@ -51,18 +61,16 @@ namespace CustomAlertBoxDemo.Forms
                 if (exists && reg.DniDropDown.IsEnabled)
                 {
                     timer1.Enabled = false;
-                    SystemSounds.Exclamation.Play();
+                    PlayAlarm();
 
                     txt = $"REZERWACJA";
-                    Komunikat = $"{DateTime.Now:T}: {txt}";
-
-                    reg.ScrollToBottom();
+                    //Komunikat = $"{DateTime.Now:T}: {txt}";
+                    //reg.ScrollToBottom();
                     reg.Rezerwuj();
                 }
 
-                txt = reg.KomunikatSpan.Text;
-
                 reg.ScrollToBottom();
+                txt = reg.KomunikatSpan.Text;
             }
             catch (Exception exception)
             {
@@ -84,9 +92,9 @@ namespace CustomAlertBoxDemo.Forms
                 if (driver == null)
                 {
                     KickOffSelenium();
+                    //KickOffSeleniumInBackground();
                 }
-                StartBrowsingLocation();
-                //btnTimer_Click(this, null);
+                //StartBrowsingLocation();
                 StartTimer();
             }
         }

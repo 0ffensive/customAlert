@@ -93,7 +93,7 @@
             this.lblCounter.ForeColor = System.Drawing.Color.Red;
             this.lblCounter.Location = new System.Drawing.Point(217, 13);
             this.lblCounter.Name = "lblCounter";
-            this.lblCounter.Size = new System.Drawing.Size(32, 23);
+            this.lblCounter.Size = new System.Drawing.Size(28, 21);
             this.lblCounter.TabIndex = 5;
             this.lblCounter.Text = "20";
             // 
@@ -102,7 +102,7 @@
             this.lblCheck.AutoSize = true;
             this.lblCheck.Location = new System.Drawing.Point(12, 13);
             this.lblCheck.Name = "lblCheck";
-            this.lblCheck.Size = new System.Drawing.Size(136, 23);
+            this.lblCheck.Size = new System.Drawing.Size(108, 21);
             this.lblCheck.TabIndex = 2;
             this.lblCheck.Text = "Check every";
             // 
@@ -135,7 +135,7 @@
             this.timePickerTo.Location = new System.Drawing.Point(118, 31);
             this.timePickerTo.Name = "timePickerTo";
             this.timePickerTo.ShowUpDown = true;
-            this.timePickerTo.Size = new System.Drawing.Size(76, 32);
+            this.timePickerTo.Size = new System.Drawing.Size(76, 27);
             this.timePickerTo.TabIndex = 9;
             this.timePickerTo.Value = new System.DateTime(2020, 7, 28, 9, 20, 0, 0);
             // 
@@ -146,7 +146,7 @@
             this.timePickerFrom.Location = new System.Drawing.Point(7, 31);
             this.timePickerFrom.Name = "timePickerFrom";
             this.timePickerFrom.ShowUpDown = true;
-            this.timePickerFrom.Size = new System.Drawing.Size(80, 32);
+            this.timePickerFrom.Size = new System.Drawing.Size(80, 27);
             this.timePickerFrom.TabIndex = 8;
             this.timePickerFrom.Value = new System.DateTime(2020, 7, 28, 8, 45, 0, 0);
             // 
@@ -192,11 +192,9 @@
             // chbEdynburg
             // 
             this.chbEdynburg.AutoSize = true;
-            this.chbEdynburg.Checked = true;
-            this.chbEdynburg.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbEdynburg.Location = new System.Drawing.Point(7, 66);
             this.chbEdynburg.Name = "chbEdynburg";
-            this.chbEdynburg.Size = new System.Drawing.Size(125, 27);
+            this.chbEdynburg.Size = new System.Drawing.Size(104, 25);
             this.chbEdynburg.TabIndex = 1;
             this.chbEdynburg.Text = "Edynburg";
             this.chbEdynburg.UseVisualStyleBackColor = true;
@@ -205,10 +203,12 @@
             // chbManchester
             // 
             this.chbManchester.AutoSize = true;
+            this.chbManchester.Checked = true;
+            this.chbManchester.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbManchester.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbManchester.Location = new System.Drawing.Point(7, 32);
             this.chbManchester.Name = "chbManchester";
-            this.chbManchester.Size = new System.Drawing.Size(147, 27);
+            this.chbManchester.Size = new System.Drawing.Size(123, 25);
             this.chbManchester.TabIndex = 0;
             this.chbManchester.Text = "Manchester";
             this.chbManchester.UseVisualStyleBackColor = true;
@@ -218,7 +218,7 @@
             // 
             this.txbFrequency.Location = new System.Drawing.Point(155, 10);
             this.txbFrequency.Name = "txbFrequency";
-            this.txbFrequency.Size = new System.Drawing.Size(56, 32);
+            this.txbFrequency.Size = new System.Drawing.Size(56, 27);
             this.txbFrequency.TabIndex = 1;
             this.txbFrequency.Text = "20";
             this.txbFrequency.Leave += new System.EventHandler(this.txbFrequency_Leave);

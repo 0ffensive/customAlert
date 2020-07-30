@@ -17,5 +17,11 @@ namespace CustomAlertBoxDemo.Selenium.Models
         
         public string Url { get; set; }
 
+        public void RunScript(string script)
+        {
+            IJavaScriptExecutor js = (IJavaScriptExecutor)Driver;
+            js.ExecuteScript(script);
+        }
+
     }
 }

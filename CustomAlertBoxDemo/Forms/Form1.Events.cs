@@ -80,7 +80,8 @@ namespace CustomAlertBoxDemo.Forms
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            //this.Alert("Warning Alert", Form_Alert.enmType.Warning);
+            PlayAlarm();
+            this.Alert("Warning Alert", Form_Alert.enmType.Warning);
 
             //textBox1.Text += $"{Komunikat}";
 
@@ -117,8 +118,9 @@ namespace CustomAlertBoxDemo.Forms
                 lastChecked.Checked = false;
 
             lastChecked = activeCheckBox.Checked ? activeCheckBox : null;
+            string lokalizacja = reg?.Lokalizacja ?? "";
 
-            if(activeCheckBox.Checked && reg.Lokalizacja != activeCheckBox.Text)
+            if (activeCheckBox.Checked && lokalizacja != activeCheckBox.Text)
             {
                 //set times
                 if (activeCheckBox.Text == "Edynburg")
@@ -134,6 +136,11 @@ namespace CustomAlertBoxDemo.Forms
 
                 CheckBoxClicked(activeCheckBox);
             }
+        }
+
+        private void CheckWhichCheckboxIsChecked()
+        {
+
         }
         
         private void btnTimer_Click(object sender, EventArgs e)
