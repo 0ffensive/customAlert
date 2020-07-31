@@ -1,0 +1,525 @@
+
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><title>
+	System Zdalnej Rejestracji
+</title><link href="../../NowaGrafika/NowyLayout.css" rel="stylesheet" type="text/css" /><link href="../../css/CookiePolicy.css" rel="stylesheet" type="text/css" />
+    </head>
+<body>
+    <script src='../../Skrypty/addLoadEvent.js' type="text/javascript"></script>
+    <script src='../../Skrypty/cookiesPolicy.js' type="text/javascript"></script>
+    <script type="text/javascript">
+        addLoadEvent(function () {
+            var cookiesPolicy = getCookie("eKonsulatCookiesPolicyClosed");
+            if (cookiesPolicy == null || cookiesPolicy == "") {
+                document.getElementById('cookiePolicy').style.display = 'inline-block';
+            }
+        })
+    </script>
+    <div id="cookiePolicy">
+	    <div id="cookieContent">
+		    <div id="cookieInfo"><span id="cookieInfoText">Ta strona wykorzystuje pliki cookies. Pozostawiając w ustawieniach przeglądarki włączoną obsługę plików cookies wyrażasz zgodę na ich użycie. Jeśli nie zgadzasz się na wykorzystanie plików cookies, zmień ustawienia swojej przeglądarki. Więcej znajdziesz w <a href="/PolitykiCookies/Polski.docx" style="TEXT-DECORATION: underline">Polityce Cookies</a>.</span></div>
+		    <div id="cookieClose">
+		        <img alt="close" src="/close.png" onclick="document.getElementById('cookiePolicy').style.display = 'none'; setCookie('eKonsulatCookiesPolicyClosed', 'true', 3650, '');"/>
+		    </div>
+        </div>
+    </div>
+    <form method="post" action="./RejestracjaTerminuWizytyPaszportowej.aspx?guid=870560bfce374f96b8a5ed51f3fdceda" id="form1">
+<div class="aspNetHidden">
+<input type="hidden" name="__EVENTTARGET" id="__EVENTTARGET" value="" />
+<input type="hidden" name="__EVENTARGUMENT" id="__EVENTARGUMENT" value="" />
+<input type="hidden" name="__LASTFOCUS" id="__LASTFOCUS" value="" />
+<input type="hidden" name="__VIEWSTATE" id="__VIEWSTATE" value="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" />
+</div>
+
+<script type="text/javascript">
+//<![CDATA[
+var theForm = document.forms['form1'];
+if (!theForm) {
+    theForm = document.form1;
+}
+function __doPostBack(eventTarget, eventArgument) {
+    if (!theForm.onsubmit || (theForm.onsubmit() != false)) {
+        theForm.__EVENTTARGET.value = eventTarget;
+        theForm.__EVENTARGUMENT.value = eventArgument;
+        theForm.submit();
+    }
+}
+//]]>
+</script>
+
+
+<script src="/WebResource.axd?d=pynGkmcFUV13He1Qd6_TZE4vn9rJ9vuUcwxJrQe8fpUGsoXo8CY-vnuEaP3D-MKMrYw9lCYMjPlrfLIkdeb1cQ2&amp;t=637270799272888601" type="text/javascript"></script>
+
+
+<script src="/ScriptResource.axd?d=NJmAwtEo3Ipnlaxl6CMhvon7gR6YnGUPx1UTRjkiTbYglSjEYAbVTCtK2NgyL5NFpwr5ak7wsiWsQ79g4z0NpvgtO27gv9iGNwss8lG3ID8iZvystDEK-Bl_8tLEh3EGZdPPofWn5NY4vKc-zSFwzIC29XRZcKpWxm-Pgwp5UdI1&amp;t=ffffffffecf19baa" type="text/javascript"></script>
+<script src="/ScriptResource.axd?d=dwY9oWetJoJoVpgL6Zq8ONbUTaXqWanVZUdONqvJ-xqTWm_Y0itqQuNa0tjRVPILuVd6mtaCqDG1Hm8LQTenmI3qADzkFZbR3mE--mKB-tFtverO7ff2nb8FG4D452faAwpX4E2LOEM3SI_Tw7U__bdjyPSEvbneSTwZVzVxvYo1&amp;t=ffffffffecf19baa" type="text/javascript"></script>
+<div class="aspNetHidden">
+
+	<input type="hidden" name="__VIEWSTATEGENERATOR" id="__VIEWSTATEGENERATOR" value="F964B211" />
+	<input type="hidden" name="__VIEWSTATEENCRYPTED" id="__VIEWSTATEENCRYPTED" value="" />
+	<input type="hidden" name="__EVENTVALIDATION" id="__EVENTVALIDATION" value="p/AGo/T0cWdV+ZMiibSObnrCg6nG/w1lyRySt9Tk1CIhd00Gr/A4m0+Ez9Ywv2IAjzwPJh1qAT9055nfhdYCvTKlF4KUd50PjY0lLRoql5AdaImDi6ClY0lzNpXWfraMuxwOFI5Uft+gtPiz1L+xauvFIbIH3ujaIC1C3DQk79FWvFgVmqsnSizaq3+8ibT7aZwZPjzFLYFF/VqKZcFueVtUm6rsYiRIOgsSGqaPBcIWXnqWVeOvoOoasjcgTHBHU8I7bKCmnk5JSA+A74dnHRpe+YEyndCkiCGrRsbSdeh86e1fVAnanMpNBRCtTmR2u/w9lWK0iTyrs/T6hJ6uYI31918o0M7X3e2VUZOJ6zptLPFrdGBnIIV1tj7rQOc1wkUJGMfsVHEESI9h3X4oSAPWGS02z6n8yrU36QG681N1hV5YJU1ip2ko1tq/rsDqUWTJi4y55gUyw/4OmX2vgxQF7ZpcAQkB/nWb0lDaiUyaZtLK8exeaSb3HpkvDPUDdssMM4TqdBhscebpO2gx9ZAqtKyu7yt8m+RfRAmwAoa4cHb4wXJan9S1GYjyh5tDhTwtE+1bsuCaNlfy/fjfXMUIPX0jJo+9IS0ju1P51/+hwCduWVmrhw9z0pWa+s/K+A8lDQXFSw8VgrlrdXUclOe6LOYmMcbv/Zr+MMphdXVVNPB47e8V5n35c+7c7Z28WbDH2cWx+bXRNR3MAmzdaQm1eWktTguGRZiJHJUJW4A=" />
+</div>  
+    <div style="width: 100%; text-align: center; margin-left: auto; margin-right: auto;">
+        <table id="tab_indywidualny" width="1020px" class="TABELA_MENU" cellpadding="0" cellspacing="0">
+	<tr>
+		<td style="height: 40px; text-align: left;" colspan="3">
+                    <a id="EKONSULAT_Hyperlink1" class="HL_SZARY" href="../../NotaPrawna/NotaPrawna.aspx" style="margin-top: 3px;">Regulamin</a>
+                    
+                    
+                    
+                </td>
+	</tr>
+	<tr>
+		<td style="height: 110px; text-align: left; vertical-align: bottom;" colspan="3">
+                    <table style="height: 110px; width: 100%;">
+                        <tr style="height: 10px;">
+                            <td style="width: 10px;">
+                                <br />
+                            </td>
+                            <td>
+                                <br />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <br />
+                            </td>
+                            <td style="text-align: left; vertical-align: bottom;">
+                                <a id="HL_EKonsulat" class="EKONSULAT_MASTER" href="https://secure.e-konsulat.gov.pl/Default.aspx">e-Konsulat</a>
+                            </td>
+                        </tr>
+                        <tr style="height: 3px;">
+                            <td>
+                            </td>
+                            <td>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+	</tr>
+	<tr>
+		<td style="width: 20px;">
+                </td>
+		<td style="text-align: right; width: 850px;">
+                    <table style="width: 100%; margin: 0px 0px 0px 0px;" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td>
+                                <span id="ctrlSiteMapPath" class="GLOWNA_NavBar"><a href="#ctrlSiteMapPath_SkipLink" style="position:absolute;left:-10000px;top:auto;width:1px;height:1px;overflow:hidden;">Skip Navigation Links</a><span><a title="Strona główna aplikacji" href="/default.aspx" style="color:White;">Strona gł&#243;wna</a></span><span> &gt; </span><span><a href="/informacyjne/placowka.aspx?IDPlacowki=115" style="color:White;">Manchester</a></span><span> &gt; </span><span><a style="color:White;">Wizyty w konsulacie</a></span><span> &gt; </span><span><a style="color:White;">Sprawy paszportowe</a></span><span> &gt; </span><span style="color:White;">Rezerwacja terminu</span><a id="ctrlSiteMapPath_SkipLink"></a></span>
+                            </td>
+                            <td style="text-align: right;">
+                                <span id="EKONSULAT_Etykieta1" class="ETYKIETA_BIALA">Wersja językowa</span>
+                            </td>
+                        </tr>
+                    </table>
+                </td>
+		<td style="text-align: right; height: 20px; width: 120px;">
+                    <select name="ctl00$ddlWersjeJezykowe" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$ddlWersjeJezykowe\&#39;,\&#39;\&#39;)&#39;, 0)" id="ddlWersjeJezykowe" style="width:100px;margin-right: 10px;">
+			<option selected="selected" value="1">Polska</option>
+			<option value="2">English</option>
+			<option value="17">Русская</option>
+			<option value="19">Українська</option>
+			<option value="20">Deutsch</option>
+			<option value="21">Fran&#231;ais</option>
+			<option value="22">Espa&#241;ol</option>
+			<option value="24">Portugu&#234;s</option>
+			<option value="25">T&#252;rk</option>
+
+		</select>
+                </td>
+	</tr>
+	<tr>
+		<td colspan="3" style="height: 70px;">
+                </td>
+	</tr>
+	<tr>
+		<td colspan="3" style="height: 520px; vertical-align: top;">
+                    <table id="tabWewnetrzna" cellpadding="0" cellspacing="0">
+			<tr>
+				<td style="width: 270px; vertical-align: top;">
+                                <div id="divMenu" style="width: 270px; height: auto; margin-top: 25px;">
+                                
+<script src="../../Skrypty/are_cookies_enabled.js" type="text/javascript"></script>
+<script type="text/javascript">
+    addLoadEvent(function () {
+        if (are_cookies_enabled()) {
+            document.getElementById('_14231df1de14b94_tabWewnetrznaMenu').style.visibility = 'visible';
+        }
+    })
+</script>
+<table id="_14231df1de14b94_tabWewnetrznaMenu" cellpadding="0" cellspacing="0" style="text-align: left;
+    width: 270px; table-layout: fixed; visibility: hidden">
+	<tr>
+		<td style="width: 34px; height: 5px;">
+            <br />
+        </td>
+		<td style="width: 35px; height: 5px;">
+            <br />
+        </td>
+		<td style="width: 165px; height: 5px;">
+            <br />
+        </td>
+		<td style="width: 35px; height: 5px;">
+            <br />
+        </td>
+	</tr>
+	<tr style="visibility: hidden;">
+		<td style="width: 35px; height: 30px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+		<td style="width: 200px" colspan="2" class="TDMENUODSTEP">
+            <a id="_14231df1de14b94_EKONSULAT_Hyperlink1" class="POZYCJA_MENU" href="https://secure.e-konsulat.gov.pl/Default.aspx">Placówki zagraniczne</a>
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+		<td style="width: 165px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+	</tr>
+	<tr id="_14231df1de14b94_ROW_wizytyOgolnie">
+		<td style="width: 15px; height: 30px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+		<td style="width: 200px" colspan="2" class="TDMENUODSTEP">
+            <span id="_14231df1de14b94_lblWizyty" class="POZYCJA_MENU">Wizyty w konsulacie</span>
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+	</tr>
+	<tr id="_14231df1de14b94_ROW_wizytyPaszportowe">
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+		<td style="width: 165px;" class="TDMENUODSTEP">
+            <a id="_14231df1de14b94_hlWizytyPaszportowe" class="PODPOZYCJA_MENU" href="https://secure.e-konsulat.gov.pl/Wizyty/Paszportowe/RejestracjaTerminuWizytyPaszportowej.aspx?IDPlacowki=115">Sprawy paszportowe</a>
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+	</tr>
+	<tr id="_14231df1de14b94_ROW_wizytyPrawne">
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+		<td style="width: 165px;" class="TDMENUODSTEP">
+            <a id="_14231df1de14b94_hlWizytyPrawne" class="PODPOZYCJA_MENU" href="https://secure.e-konsulat.gov.pl/Uslugi/RejestracjaTerminu.aspx?IDUSLUGI=5&amp;IDPlacowki=115">Sprawy prawne</a>
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+	</tr>
+	<tr id="_14231df1de14b94_ROW_wizytyObywatelskie">
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+		<td style="width: 165px;" class="TDMENUODSTEP">
+            <a id="_14231df1de14b94_hlWizytyObywatelskie" class="PODPOZYCJA_MENU" href="https://secure.e-konsulat.gov.pl/Uslugi/RejestracjaTerminu.aspx?IDUSLUGI=6&amp;IDPlacowki=115">Sprawy dotyczące obywatelstwa polskiego</a>
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+	</tr>
+	<tr id="_14231df1de14b94_rowAnulowanieWizyty">
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+		<td style="width: 165px;" class="TDMENUODSTEP">
+            <a id="_14231df1de14b94_hlAnulujWizyte" class="PODPOZYCJA_MENU" href="https://secure.e-konsulat.gov.pl/Wizyty/Paszportowe/AnulowanieWizyty.aspx?IDPlacowki=115">Anuluj umówioną wizytę</a>
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+		<td style="width: 165px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+	</tr>
+	<tr>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+		<td style="width: 165px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            &nbsp;
+        </td>
+	</tr>
+	<tr style="display: none;">
+		<td style="width: 15px; height: 30px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+		<td style="width: 200px" colspan="2" class="TDMENUODSTEP">
+            <a id="_14231df1de14b94_EKONSULAT_Hyperlink9" class="POZYCJA_MENU" href="https://secure.e-konsulat.gov.pl/Default.aspx">Dyżury konsularne</a>
+        </td>
+		<td style="width: 35px;" class="TDMENUODSTEP">
+            <br />
+        </td>
+	</tr>
+</table>
+
+</div>
+                            </td>
+				<td id="tdTabWewnetrzna" style="width: 650px; vertical-align: top;">
+                                
+                                
+                                
+    <script type="text/javascript">
+//<![CDATA[
+Sys.WebForms.PageRequestManager._initialize('ctl00$cp$ScriptManager1', 'form1', [], [], [], 90, 'ctl00');
+				//]]>
+</script>
+
+    <div id="cp_divFormularz" class="biale_tlo" style="width: 100%;">
+        <table width="650px">
+            <tr>
+                <td colspan="3" style="height: 30px;">
+                    <br />
+                </td>
+            </tr>
+            <tr id="cp_rowLokalizacje">
+					<td width="15px" class="ramka_dol_wniosek">
+                    &nbsp;
+                </td>
+					<td class="ramka_dol_wniosek">
+                    
+                    <br />
+                </td>
+					<td width="200px" class="ramka_dol_wniosek">
+                    
+                    <br />
+                </td>
+				</tr>
+				
+            <tr>
+                <td width="30px">
+                    <br />
+                </td>
+                <td colspan="2">
+                    <div style="width: 100%; min-height: 100px; height: auto;">
+                        <span id="cp_lblInformacje"><p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: .0001pt; text-align: justify; line-height: normal;"><strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: red; mso-fareast-language: PL;">Konsulat Generalny RP w Manchesterze uprzejmie informuje, że wznowiono obsługę interesant&oacute;w poprzez system e-Konsulat. Terminy spotkań paszportowych są sukcesywnie dodawane&nbsp;w dni robocze o godz. 9.00 oraz 21.00.</span></strong></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: .0001pt; text-align: justify; line-height: normal;"><strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">UWAGA:</span></strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;"> Komunikat o "braku termin&oacute;w do dnia&hellip;." nie oznacza, iż do tego dnia nie będzie możliwości um&oacute;wienia się na spotkanie paszportowe w systemie e-Konsulat. Codziennie w dni robocze o godz. 9.00 oraz 21.00 są udostępnianie nowe terminy wizyt w sprawach paszportowych, <strong>w tym na najbliższe dni robocze.</strong></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: .0001pt; text-align: justify; line-height: normal;"><span style="font-size: 10.5pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: red; background: white; mso-fareast-language: PL;">Od dnia 19 lipca 2019 r. obowiązuje nowy wz&oacute;r wniosku o wydanie przez konsula RP paszportu oraz paszportu tymczasowego. Nowy wz&oacute;r wniosku dostępny do pobrania<u> <a href="https://www.gov.pl/attachment/c91e9dc7-1345-4db7-899f-b24c83766399"><span style="font-size: 8.5pt; color: red; border: none windowtext 1.0pt; mso-border-alt: none windowtext 0cm; padding: 0cm;">tutaj</span></a>.</u></span><span style="font-size: 8.5pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: red; mso-fareast-language: PL;">&nbsp;</span><span style="font-size: 8.5pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: #4f4f4f; background: white; mso-fareast-language: PL;">&nbsp;</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: .0001pt; text-align: justify; line-height: normal;"><em style="mso-bidi-font-style: normal;"><span style="font-size: 10.5pt; mso-ascii-font-family: Calibri; mso-fareast-font-family: 'Times New Roman'; mso-hansi-font-family: Calibri; mso-bidi-font-family: Calibri; color: black; background: white; mso-fareast-language: PL;">Pracownicy konsulatu nie ponoszą&nbsp;żadnej odpowiedzialności za interesant&oacute;w kupujących bilety lotnicze, wycieczki, wczasy, organizujących&nbsp; uroczystości rodzinne, imprezy itp. w momencie, gdy nie posiadają oni lub ich dzieci ważnych dokument&oacute;w uprawniających do podr&oacute;żowania. Wykupiona podr&oacute;ż zagraniczna, zaplanowana bez ważnego dokumentu&nbsp; (dowodu osobistego w granicach UE lub paszportu), nie upoważnia do przyspieszenia terminu spotkania paszportowego.</span></em></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: .0001pt; text-align: justify; line-height: normal;"><span style="font-size: 10.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; background: white; mso-fareast-language: PL;">Każda umawiająca się&nbsp;na spotkanie osoba ma <u>obowiązek&nbsp;zapoznania się ze szczeg&oacute;łowymi informacjami</u> dotyczącymi zasad składania wniosk&oacute;w oraz wymaganych dokument&oacute;w, umieszczonymi na stronie:&nbsp;</span><span style="font-size: 10.0pt; font-family: 'Georgia',serif; mso-fareast-font-family: 'Times New Roman'; mso-bidi-font-family: 'Times New Roman'; color: blue; mso-fareast-language: PL;"><a href="https://www.gov.pl/web/wielkabrytania/paszporty"><span style="font-size: 10.5pt; font-family: 'Calibri',sans-serif;">https://www.gov.pl/web/wielkabrytania/paszporty</span></a></span><span style="font-size: 8.5pt; font-family: 'Georgia',serif; mso-fareast-font-family: 'Times New Roman'; mso-bidi-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">. </span><span style="font-size: 10.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">Brak wymaganych dokument&oacute;w uniemożliwi skuteczne złożenie wniosku paszportowego i utrudni realizację Państwa plan&oacute;w.</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: .0001pt; text-align: center; line-height: normal;" align="center"><span style="font-size: 8.5pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;"><br /> </span><strong><span style="font-size: 10.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">WAŻNE UWAGI!</span></strong></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: .0001pt; text-align: center; line-height: normal;" align="center">&nbsp;</p>
+<p style="mso-margin-top-alt: auto; mso-margin-bottom-alt: auto; text-align: justify; line-height: normal;"><strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: red; mso-fareast-language: PL;">W związku z ogłoszoną przez Światową Organizację Zdrowia pandemią COVID-19 oraz zaleceniami Ministerstwa Spraw Zagranicznych uprzejmie prosimy o sprawdzanie w przeddzień wizyty czy w danym dniu Konsulat przyjmuje interesant&oacute;w. </span></strong></p>
+<p style="margin-bottom: .0001pt; text-align: center; line-height: normal;" align="center">&nbsp;</p>
+<p style="margin-bottom: .0001pt; text-align: justify; line-height: normal;"><strong><u><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: red; mso-fareast-language: PL;">Przypominamy o konieczności noszenia maseczek zakrywających twarz!&nbsp;</span></u></strong><u></u></p>
+<p style="margin-bottom: .0001pt; text-align: center; line-height: normal;" align="center">&nbsp;</p>
+<p style="margin-bottom: .0001pt; text-align: justify; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">&nbsp;</span></p>
+<p style="margin-bottom: .0001pt; text-align: center; line-height: normal;" align="center">&nbsp;</p>
+<p style="margin-bottom: 10.0pt; text-align: justify; line-height: normal;"><strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">UPRZEJMIE PROSIMY O WNOSZENIE OPŁAT&nbsp;KONSULARNYCH WYŁĄCZNIE KARTAMI PŁATNICZYMI (DEBETOWYMI LUB KREDYTOWYMI).</span></strong></p>
+<p style="margin-bottom: .0001pt; text-align: center; line-height: normal;" align="center">&nbsp;</p>
+<p style="margin-bottom: .0001pt; text-align: justify; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: red; mso-fareast-language: PL;">Na spotkania należy przybywać punktualnie oraz z wypełnionym wnioskiem paszportowym. Wejście do konsulatu będzie możliwe na 15 minut przed um&oacute;wionym spotkaniem i najp&oacute;źniej 15 minut po um&oacute;wionej godzinie. <strong>Osoby sp&oacute;źnione muszą ponownie um&oacute;wić się na spotkanie paszportowe.</strong></span></p>
+<p style="margin-bottom: .0001pt; text-align: justify; line-height: normal;"><span style="font-size: 10.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: red; mso-fareast-language: PL;"><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">&nbsp;</span></span></p>
+<p style="margin-bottom: .0001pt; text-align: center; line-height: normal;" align="center"><span style="font-size: 8.5pt; font-family: 'Georgia',serif; mso-fareast-font-family: 'Times New Roman'; mso-bidi-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">&nbsp;</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: 10.0pt; text-align: justify; line-height: normal;"><span style="color: black; font-family: 'Arial',sans-serif; font-size: 12pt;">1. <strong>Wydział paszportowy konsulatu przyjmuje interesant&oacute;w w następujących sprawach</strong>:</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: 12pt;">&nbsp;</span></p>
+<p style="text-align: justify; text-indent: -14.2pt; mso-list: l0 level1 lfo1; margin: 0cm 0cm 10.0pt 35.45pt;"><span style="font-size: 12pt;"><span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol; color: black;"><span style="mso-list: Ignore;">&middot;<span style="line-height: normal; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-family: 'Arial',sans-serif; color: black;">Złożenie wniosku o wydanie paszportu tymczasowego, </span></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: 12pt;">&nbsp;</span></p>
+<p style="text-align: justify; text-indent: -14.2pt; mso-list: l0 level1 lfo1; margin: 0cm 0cm 10.0pt 35.45pt;"><span style="font-size: 12pt;"><span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol; color: black;"><span style="mso-list: Ignore;">&middot;<span style="line-height: normal; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-family: 'Arial',sans-serif; color: black;">Złożenie wniosku o wydanie paszportu 5-letniego i 10-letniego,</span></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: 12pt;">&nbsp;</span></p>
+<p style="text-align: justify; text-indent: -14.2pt; mso-list: l0 level1 lfo1; margin: 0cm 0cm 10.0pt 35.45pt;"><span style="font-size: 12pt;"><span style="font-family: Symbol; mso-fareast-font-family: Symbol; mso-bidi-font-family: Symbol; color: black;"><span style="mso-list: Ignore;">&middot;<span style="line-height: normal; font-family: 'Times New Roman'; font-style: normal; font-variant: normal; font-weight: normal; font-size-adjust: none; font-stretch: normal;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </span></span></span><span style="font-family: 'Arial',sans-serif; color: black;">Nadanie numeru PESEL.</span></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;"><span style="font-size: 12pt;">&nbsp;</span></p>
+<p style="margin-bottom: 10.0pt; text-align: justify;"><span style="color: black; font-family: 'Arial',sans-serif; font-size: 12pt;">UWAGA: Złożenie wniosku o wydanie paszportu tymczasowego, 5-letniego lub 10-letniego wymaga um&oacute;wienia wizyty w systemie e-Konsulat. Natomiast samego <u>zgłoszenia utraty</u> dowodu osobistego lub paszportu można dokonać w godzinach pracy urzędu. </span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: 10.0pt; text-align: justify; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">2.System pozwala tylko na jednokrotną rejestrację na spotkanie w urzędzie. Ponowna rejestracja możliwa jest tylko po odwołaniu wcześniejszej wizyty lub po upływie terminu, na kt&oacute;ry została ona wyznaczona.</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: 10.0pt; text-align: justify; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">3. Wypełniając formularz należy podać wszystkie wymagane dane. Wpisanie niepoprawnych danych osobowych spowoduje odrzucenie wniosku.</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: 10.0pt; text-align: justify; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">4. Po zarejestrowaniu formularza </span><strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: red; mso-fareast-language: PL;">należy pobrać i wydrukować potwierdzenie spotkania</span></strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;"> (<em>Pobierz potwierdzenie spotkania</em>). Z potwierdzeniem należy przybyć do konsulatu w dniu spotkania. Osoby bez wydrukowanych potwierdzeń mogą nie zostać&nbsp;wpuszczone do konsulatu.</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: 10.0pt; text-align: justify; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">5. Wypełniając formularz wizyty paszportowej należy podać dane osobowe osoby, dla kt&oacute;rej składany będzie wniosek. <strong>W przypadku dzieci należy podać dane dziecka, a nie rodzic&oacute;w lub opiekun&oacute;w.</strong></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: 10.0pt; text-align: justify; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">6. Wyjątkowo, w przypadku umawiania spotkania w celu uzyskania pierwszego paszportu tymczasowego na podstawie brytyjskiego odpisu aktu urodzenia dla dziecka do 1 roku życia należy wybrać opcję "paszport tymczasowy na powr&oacute;t do Polski" i podać dane jednego z rodzic&oacute;w, a nie dziecka.</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: 10.0pt; text-align: justify; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">7. Osoby umawiające się na spotkanie w sprawach paszportowych są </span><strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: red; mso-fareast-language: PL;">zobowiązane do zapoznania się z szczeg&oacute;łowymi informacjami dotyczącymi zasad składania wniosk&oacute;w oraz wymaganych dokument&oacute;w</span></strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">, umieszczonych na stronie: <a href="https://www.gov.pl/web/wielkabrytania/paszporty">https://www.gov.pl/web/wielkabrytania/paszporty</a> </span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: 10.0pt; text-align: justify; line-height: normal;"><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">8. Na wizytę paszportową należy zgłosić się z wypełnionym wnioskiem paszportowym (punkty 1-13) dostępnym do pobrania na stronie internetowej konsulatu. Wniosek powinien być wydrukowany dwustronnie na kartce papieru formatu A-4.</span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p style="margin-bottom: .0001pt; text-align: justify; line-height: normal;"><span style="font-size: 8.5pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">&nbsp;</span><strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">Spotkanie paszportowe poza obowiązującą wszystkich interesant&oacute;w kolejnością może być um&oacute;wione w wyjątkowych i udokumentowanych okolicznościach, </span></strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">do kt&oacute;rych należą sytuacje związane z nagłą chorobą lub pogrzebem członka rodziny. Jest to możliwe <strong>po przedstawieniu konsulowi&nbsp;dokument&oacute;w potwierdzających dane zdarzenia</strong> (akt zgonu, zaświadczenie ze szpitala lub od lekarza dot. nagłej choroby członka rodziny). W razie wystąpienia takiej sytuacji prosimy o przesłanie podpisanego (e-maila na adres: <a><strong><span style="color: windowtext; text-decoration: none; text-underline: none;">manchester.paszporty@msz.gov.pl</span></strong></a></span></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;">&nbsp;</p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;"><strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">Adres Konsulatu Generalnego RP w Manchesterze: </span></strong></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;"><strong><span style="font-size: 12.0pt; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-fareast-language: PL;">Manchester One</span></strong></p>
+<p class="MsoNormal" style="margin: 0cm 0cm 0pt; text-align: left;"><strong><span style="font-size: 12.0pt; line-height: 107%; font-family: 'Arial',sans-serif; mso-fareast-font-family: 'Times New Roman'; color: black; mso-ansi-language: PL; mso-fareast-language: PL; mso-bidi-language: AR-SA;">51 Portland Street<br /> Manchester M1 3LD</span></strong></p></span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    <br />
+                </td>
+            </tr>
+            <tr>
+                <td width="15px" class="ramka_gora_wniosek">
+                    <br />
+                </td>
+                <td colspan="2" class="ramka_gora_wniosek">
+                    Rejestracja formularza:
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <br />
+                </td>
+                <td colspan="2">
+                    <table width="100%">
+                        <tr id="cp_rowWieleOsob">
+					<td colspan="2">
+                                <span id="cp_lblRezerwacjaTerminu">Chcę zarezerwować termin dla </span>
+                                <select name="ctl00$cp$ctrlDzieci" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$cp$ctrlDzieci\&#39;,\&#39;\&#39;)&#39;, 0)" id="cp_ctrlDzieci">
+						<option value="-1"></option>
+						<option selected="selected" value="1">1</option>
+						<option value="2">2</option>
+						<option value="3">3</option>
+						<option value="4">4</option>
+						<option value="5">5</option>
+						<option value="6">6</option>
+						<option value="7">7</option>
+						<option value="8">8</option>
+
+					</select>
+                                <span id="cp_lblRezerwacjaTerminu_osob">osob</span>
+                            </td>
+				</tr>
+				
+                        <tr>
+                            <td colspan="2">
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr id="cp_rowDataWizyty">
+					<td width="100px">
+                                Data wizyty
+                            </td>
+					<td width="600px">
+                                <select name="ctl00$cp$ctrlDni" onchange="javascript:setTimeout(&#39;__doPostBack(\&#39;ctl00$cp$ctrlDni\&#39;,\&#39;\&#39;)&#39;, 0)" id="cp_ctrlDni" style="width:100px;">
+						<option selected="selected" value="2020-08-04">2020-08-04</option>
+
+					</select>
+                            </td>
+				</tr>
+				
+                        <tr id="cp_rowGodzinaWizyty">
+					<td width="100px">
+                                Godzina wizyty
+                            </td>
+					<td width="600px">
+                                <select name="ctl00$cp$ctrlGodziny" id="cp_ctrlGodziny" style="width:100px;">
+						<option value="7074266"> 09:54</option>
+						<option value="7074267"> 10:12</option>
+						<option selected="selected" value="7074269"> 10:48</option>
+						<option value="7074277"> 13:12</option>
+						<option value="7074279"> 13:48</option>
+						<option value="7074280"> 14:06</option>
+						<option value="7074281"> 14:24</option>
+
+					</select>
+                            </td>
+				</tr>
+				
+                        <tr id="cp_rowZarejestruj">
+					<td width="100px">
+                                &nbsp;
+                            </td>
+					<td width="600px">
+                                <input type="submit" name="ctl00$cp$btnZarejestruj" value="Zarezerwuj termin wizyty" id="cp_btnZarejestruj" />
+                            </td>
+				</tr>
+				
+                        <tr id="cp_rowKomunikat">
+					<td width="100px">
+                                &nbsp;
+                            </td>
+					<td width="600px">
+                                <span id="cp_LabelKomunikat" class="komunikat_blad">Wybrany termin jest już niedostępny. </span>
+                            </td>
+				</tr>
+				
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    
+
+                            </td>
+			</tr>
+		</table>
+		
+                </td>
+	</tr>
+	<tr>
+		<td colspan="3" style="height: 30px;">
+                    <br />
+                </td>
+	</tr>
+	<tr>
+		<td colspan="3">
+                    <span id="lblmsz" class="ETYKIETA_SZARA">(c) Ministerstwo Spraw Zagranicznych | </span>
+                    <a id="EKONSULAT_Hyperlink2" class="HL_SZARY" href="../../NotaPrawna/NotaPrawna.aspx">Regulamin</a>
+                    <span id="EKONSULAT_Etykieta7" class="ETYKIETA_SZARA"> | </span>
+                    
+                    
+                </td>
+	</tr>
+</table>
+
+        <div>
+        </div>
+    </div>
+    </form>
+</body>
+</html>

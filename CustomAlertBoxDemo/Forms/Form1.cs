@@ -85,7 +85,7 @@ namespace CustomAlertBoxDemo.Forms
             }
             catch (Exception exception)
             {
-                txt = exception.ToString().Substring(0, 222);
+                txt = exception.ToString().Substring(0, 444);
             }
 
             //return Komunikat;

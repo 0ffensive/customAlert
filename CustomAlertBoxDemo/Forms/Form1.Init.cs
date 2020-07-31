@@ -84,6 +84,23 @@ namespace CustomAlertBoxDemo.Forms
             thread.Start();
         }
 
+        private void KickOffSeleniumInBackground()
+        {
+            Thread thread = new Thread(() =>
+            {
+                KickOffSelenium();
+                //Start_TimeConsumingOperation();
+                StartTimer();
+                //if(!backgroundWorker1.IsBusy)
+                //{
+                //    backgroundWorker1.RunWorkerAsync();    
+                //}
+                
+            });
+            thread.Priority = ThreadPriority.BelowNormal;
+            thread.Start();
+        }
+
         private void InitSelenium()
         {
             driverFactory = new DriverFactory();
@@ -92,7 +109,7 @@ namespace CustomAlertBoxDemo.Forms
             
             //sizing
             var screen = WindowExt.GetSecondaryScreen().WorkingArea;
-            driver.Manage().Window.Size = new Size(screen.Width / 2, screen.Height);
+            driver.Manage().Window.Size = new Size(screen.Width / 2, screen.Height - 200);
 
             //move window to the left if 2 screens
             if (Screen.AllScreens.Length > 1)

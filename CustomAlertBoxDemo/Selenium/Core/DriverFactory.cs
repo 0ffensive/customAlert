@@ -56,8 +56,6 @@ namespace CustomAlertBoxDemo.Selenium.Core
 
             chromeOptions.AddUserProfilePreference("profile.managed_default_content_settings.images", 2);
 
-            //prefs = {'': 2}
-
             // Prevent error "Loading of unpacked extensions is disabled by the administrator"
             chromeOptions.AddAdditionalCapability("useAutomationExtension", false);
 
@@ -68,8 +66,6 @@ namespace CustomAlertBoxDemo.Selenium.Core
 
             var chromeDriver = new ChromeDriver(chromeDriverService, chromeOptions, TimeSpan.FromSeconds(Constants.Driver.TimeOut.WebDriverCommand));
             chromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(Constants.Driver.TimeOut.FindWebElement);
-
-            
 
             return chromeDriver;
         }
