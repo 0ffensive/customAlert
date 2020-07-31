@@ -90,6 +90,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\ControlsExtensions.cs" />
     <Compile Include="Controls\ObservableProperty.cs" />
     <Compile Include="Controls\MyGroupBox.cs">
       <SubType>Component</SubType>

@@ -4,6 +4,7 @@ using System.Drawing;
 using System.IO;
 using System.Media;
 using System.Threading;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Media;
 using CustomAlertBoxDemo.Selenium;
@@ -33,10 +34,24 @@ namespace CustomAlertBoxDemo.Forms
         
         private MediaPlayer mediaPlayer = new MediaPlayer();
 
-        private void PlayAlarm()
+
+        //private async Task PlayAlarmAsync()
+        //{
+        //    mediaPlayer.Open(new Uri($"{Directory.GetCurrentDirectory()}\\Resources\\alarm1.mp3"));
+        //    mediaPlayer.Play();
+        //    await Task.Yield();
+        //}
+
+        private async Task PlayAlarmAsync()
         {
-            mediaPlayer.Open(new Uri($"{Directory.GetCurrentDirectory()}\\Resources\\alarm1.mp3"));
-            mediaPlayer.Play();
+            BackgroundWorker thread = new BackgroundWorker();
+            thread.DoWork += (sender, e) =>
+            {
+                mediaPlayer.Open(new Uri($"{Directory.GetCurrentDirectory()}\\Resources\\alarm1.mp3"));
+                mediaPlayer.Play();
+            };
+            thread.RunWorkerAsync();
+            await Task.Yield();
         }
         private int GetFrequencySeconds()
         {
@@ -46,7 +61,7 @@ namespace CustomAlertBoxDemo.Forms
                 return 20;
         }
 
-        private void KickOffSelenium()
+        private async Task KickOffSelenium()
         {
             InitSelenium();
             StartBrowsingLocation();
@@ -61,18 +76,19 @@ namespace CustomAlertBoxDemo.Forms
             backgroundWorker1.ReportProgress(counter++);
         }
 
-        private string TimeConsumingOperation(BackgroundWorker bw)
+        private async Task<string> TimeConsumingOperation(BackgroundWorker bw)
         {
             string txt = "Blad";
             try
             {
                 reg.ReloadCurrentPage();
+                await PlayAlarmAsync();
                 
                 bool exists = reg.DniDropDown.Exists();
                 if (exists && reg.DniDropDown.IsEnabled)
                 {
                     timer1.Enabled = false;
-                    PlayAlarm();
+                    await PlayAlarmAsync();
 
                     txt = $"REZERWACJA";
                     //Komunikat = $"{DateTime.Now:T}: {txt}";

@@ -17,7 +17,7 @@ namespace CustomAlertBoxDemo.Forms
             p.Graphics.DrawString(box.Text, box.Font, brush, 0, 0);
         }
 
-        private void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
+        private async void backgroundWorker1_DoWork(object sender, DoWorkEventArgs e)
         {
             // Do not access the form's BackgroundWorker reference directly.
             // Instead, use the reference provided by the sender parameter.
@@ -27,7 +27,7 @@ namespace CustomAlertBoxDemo.Forms
             //int arg = (int)e.Argument;
 
             // Start the time-consuming operation.
-            e.Result = TimeConsumingOperation(bw);
+            e.Result = await TimeConsumingOperation(bw);
 
             // If the operation was canceled by the user,
             // set the DoWorkEventArgs.Cancel property to true.
@@ -81,7 +81,7 @@ namespace CustomAlertBoxDemo.Forms
 
         private async void button2_Click(object sender, EventArgs e)
         {
-            PlayAlarm();
+            await PlayAlarmAsync();
             this.Alert("Warning Alert", Form_Alert.enmType.Warning);
 
             //textBox1.Text += $"{Komunikat}";

@@ -67,22 +67,6 @@ namespace CustomAlertBoxDemo.Forms
             driverFactory.Dispose();
         }
 
-        private void KickOffSeleniumInBackground()
-        {
-            Thread thread = new Thread(() =>
-            {
-                KickOffSelenium();
-                //Start_TimeConsumingOperation();
-                StartTimer();
-                //if(!backgroundWorker1.IsBusy)
-                //{
-                //    backgroundWorker1.RunWorkerAsync();    
-                //}
-                
-            });
-            thread.Priority = ThreadPriority.BelowNormal;
-            thread.Start();
-        }
 
         private void KickOffSeleniumInBackground()
         {
