@@ -50,12 +50,13 @@ namespace CustomAlertBoxDemo.Forms
             else if (e.Error != null)
             {
                 // There was an error during the operation.
-                string msg = String.Format("An error occurred: {0}", e.Error.Message);
+                string msg = $"An error occurred: {e.Error.Message}";
                 MessageBox.Show(msg);
             }
             else
             {
-                textBox1.AppendText($"{e.Result}\r\n");
+                //textBox1.AppendText($"{e.Result}\r\n");
+                WriteMessage(e.Result.ToString());
             }
         }
 
@@ -106,6 +107,7 @@ namespace CustomAlertBoxDemo.Forms
 
         private void timer1_Tick(object sender, EventArgs e)
         {
+            RestartSecondsTimer();
             Start_TimeConsumingOperation();
         }
 
@@ -158,12 +160,24 @@ namespace CustomAlertBoxDemo.Forms
         private void txbFrequency_Leave(object sender, EventArgs e)
         {
             //StopTimer();
+            
             timer1.Interval = GetFrequencySeconds() * 1000;
+
+            RestartSecondsTimer();
+            //timer2.Stop();
+            //seconds = GetFrequencySeconds();
+            //lblCounter.Text = seconds.ToString();
+            //timer2.Start();
+            
+            //StartTimer();
+        }
+
+        private void RestartSecondsTimer()
+        {
             timer2.Stop();
             seconds = GetFrequencySeconds();
             lblCounter.Text = seconds.ToString();
             timer2.Start();
-            //StartTimer();
         }
 
         

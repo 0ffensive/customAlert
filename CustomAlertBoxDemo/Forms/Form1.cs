@@ -12,7 +12,18 @@ namespace CustomAlertBoxDemo.Forms
 {
     public partial class Form1 : Form
     {
-        private void StartBrowsingLocation() => reg.Start(GetSelectedLocation);
+        private void StartBrowsingLocation()
+        {
+            try
+            {
+                reg.Start(GetSelectedLocation);
+            }
+            catch (Exception e)
+            {
+                WriteMessage(e.ToString(), 222);
+            }
+            
+        }
         private string GetSelectedLocation => chbEdynburg.Checked ? chbEdynburg.Text : chbManchester.Text;
         private bool IsTimeRight => DateTime.Now.TimeOfDay >= timePickerFrom.Value.TimeOfDay 
                                     && DateTime.Now.TimeOfDay <= timePickerTo.Value.TimeOfDay;
@@ -66,14 +77,21 @@ namespace CustomAlertBoxDemo.Forms
             }
             catch (Exception exception)
             {
-                txt = exception.ToString().Substring(55);
-            }
-            finally
-            {
-                Komunikat = $"{DateTime.Now:T}: {txt}";
+                txt = exception.ToString().Substring(0, 222);
             }
 
-            return Komunikat;
+            //return Komunikat;
+            return txt;
+        }
+
+        private void WriteMessage(string msg, int trimTo = 0)
+        {
+            if (trimTo > 0)
+            {
+                msg = msg.Substring(0, trimTo);
+            }
+
+            txbOutput.AppendText($"{DateTime.Now:T}: {msg}\r\n");
         }
 
         private void CheckBoxClicked(CheckBox activeCheckBox)

@@ -47,7 +47,7 @@
             this.button4 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.progressBar1 = new System.Windows.Forms.ProgressBar();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txbOutput = new System.Windows.Forms.TextBox();
             this.timer2 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -82,7 +82,7 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.progressBar1);
-            this.splitContainer1.Panel2.Controls.Add(this.textBox1);
+            this.splitContainer1.Panel2.Controls.Add(this.txbOutput);
             this.splitContainer1.Size = new System.Drawing.Size(917, 477);
             this.splitContainer1.SplitterDistance = 291;
             this.splitContainer1.TabIndex = 2;
@@ -192,8 +192,6 @@
             // chbEdynburg
             // 
             this.chbEdynburg.AutoSize = true;
-            this.chbEdynburg.Checked = true;
-            this.chbEdynburg.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbEdynburg.Location = new System.Drawing.Point(7, 66);
             this.chbEdynburg.Name = "chbEdynburg";
             this.chbEdynburg.Size = new System.Drawing.Size(125, 27);
@@ -205,6 +203,8 @@
             // chbManchester
             // 
             this.chbManchester.AutoSize = true;
+            this.chbManchester.Checked = true;
+            this.chbManchester.CheckState = System.Windows.Forms.CheckState.Checked;
             this.chbManchester.Cursor = System.Windows.Forms.Cursors.Default;
             this.chbManchester.Location = new System.Drawing.Point(7, 32);
             this.chbManchester.Name = "chbManchester";
@@ -260,17 +260,17 @@
             this.progressBar1.Size = new System.Drawing.Size(593, 23);
             this.progressBar1.TabIndex = 1;
             // 
-            // textBox1
+            // txbOutput
             // 
-            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.txbOutput.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox1.Location = new System.Drawing.Point(17, 50);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
-            this.textBox1.Size = new System.Drawing.Size(593, 415);
-            this.textBox1.TabIndex = 0;
+            this.txbOutput.Location = new System.Drawing.Point(17, 50);
+            this.txbOutput.Multiline = true;
+            this.txbOutput.Name = "txbOutput";
+            this.txbOutput.ScrollBars = System.Windows.Forms.ScrollBars.Horizontal;
+            this.txbOutput.Size = new System.Drawing.Size(593, 415);
+            this.txbOutput.TabIndex = 0;
             // 
             // timer2
             // 
@@ -309,7 +309,7 @@
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.ProgressBar progressBar1;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txbOutput;
         private System.Windows.Forms.CheckBox chbEdynburg;
         private System.Windows.Forms.CheckBox chbManchester;
         private System.Windows.Forms.Label lblCheck;

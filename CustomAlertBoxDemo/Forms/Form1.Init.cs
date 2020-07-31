@@ -57,7 +57,7 @@ namespace CustomAlertBoxDemo.Forms
             if (IsTimeRight)
             {
                 KickOffSeleniumInBackground();
-                StartTimer();
+                //StartTimer();
             }
         }
         ~Form1()
@@ -73,7 +73,12 @@ namespace CustomAlertBoxDemo.Forms
             {
                 KickOffSelenium();
                 //Start_TimeConsumingOperation();
-                backgroundWorker1.RunWorkerAsync();
+                StartTimer();
+                //if(!backgroundWorker1.IsBusy)
+                //{
+                //    backgroundWorker1.RunWorkerAsync();    
+                //}
+                
             });
             thread.Priority = ThreadPriority.BelowNormal;
             thread.Start();
