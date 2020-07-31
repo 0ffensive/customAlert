@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using System.Media;
 using CustomAlertBoxDemo.Selenium.Core;
 using CustomAlertBoxDemo.Selenium.Models;
 using OpenQA.Selenium;
@@ -29,23 +30,34 @@ namespace CustomAlertBoxDemo.Selenium
 
             string idPlacowki = GetPlacowkaId(Url);
             Driver.Navigate().GoToUrl(Url);
+
+            Cookie cookie = new Cookie("eKonsulatCookiesPolicyClosed", "true");
+            Driver.Manage().Cookies.AddCookie(cookie);
+
             Driver.Navigate().GoToUrl(rezerwacja + idPlacowki);
-            
-            //DzieciDropDown.AsSelect.SelectByText($"{dzieci}");
         }
 
         public void ReloadCurrentPage(int dzieci = 1)
         {
             string current = Driver.Url;
             Driver.Navigate().GoToUrl(current);
-
+            
             if (Lokalizacja == "Edynburg")
             {
-                LokalizacjaDropDown.AsSelect.SelectByText("Edynburg");
+                //wybierz dropdown na gorze
+                string currentValue = LokalizacjaDropDown.AsSelect.SelectedOption.Value();
+                if(currentValue != Lokalizacja)
+                {
+                    LokalizacjaDropDown.AsSelect.SelectByText(Lokalizacja);
+                }
             }
-
-            this.ScrollToBottom();
+            
             DzieciDropDown.AsSelect.SelectByText($"{dzieci}");
+
+            RunScript("document.body.style.backgroundColor = 'slategrey';");
+            RunScript("document.getElementById('divMenu').parentNode.remove();");
+            //
+            this.ScrollToBottom();
         }
 
         public void Rezerwuj()
@@ -63,7 +75,7 @@ namespace CustomAlertBoxDemo.Selenium
 
         public IWebElement KomunikatSpan => Driver.FindElement(By.Id("cp_LabelKomunikat"));
         public IWebElement RezerwujButton => Driver.FindElement(By.Id("cp_btnZarejestruj"));
-        
+
         //public IWebElement HomeLink => Driver.FindElement(By.LinkText("Home"));
     }
 }

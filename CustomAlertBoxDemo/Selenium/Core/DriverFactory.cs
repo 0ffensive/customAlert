@@ -54,6 +54,10 @@ namespace CustomAlertBoxDemo.Selenium.Core
             
             chromeOptions.AddArgument("no-proxy-server");
 
+            chromeOptions.AddUserProfilePreference("profile.managed_default_content_settings.images", 2);
+
+            //prefs = {'': 2}
+
             // Prevent error "Loading of unpacked extensions is disabled by the administrator"
             chromeOptions.AddAdditionalCapability("useAutomationExtension", false);
 
