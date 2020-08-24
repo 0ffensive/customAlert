@@ -1,6 +1,7 @@
 ﻿using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace CustomAlertBoxDemo.Forms
@@ -145,11 +146,11 @@ namespace CustomAlertBoxDemo.Forms
 
         }
         
-        private void btnTimer_Click(object sender, EventArgs e)
+        private async void btnTimer_Click(object sender, EventArgs e)
         {
             if (driver == null)
             {
-                InitSelenium();
+                await InitSelenium();
             }
 
             //jesli nie jestesmy na stronie docelowej
@@ -187,18 +188,44 @@ namespace CustomAlertBoxDemo.Forms
             timer2.Start();
         }
 
-        
+
         private void timer2_Tick(object sender, EventArgs e)
         {
             if (!timer1.Enabled)
                 return;
 
             seconds--;
-            if(seconds < 0)
+            if (seconds < 0)
             {
                 seconds = GetFrequencySeconds();
             }
             lblCounter.Text = seconds.ToString();
+        }
+
+        private async void backgroundWorker2_DoWork(object sender, DoWorkEventArgs e)
+        {
+            Thread.Sleep(1000 * 5);
+            PlayMeAudio();
+        }
+
+        private void backgroundWorker2_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+            //if (e.Cancelled)
+            //{
+            //    // The user canceled the operation.
+            //    MessageBox.Show("Operation was canceled");
+            //}
+            //else if (e.Error != null)
+            //{
+            //    // There was an error during the operation.
+            //    string msg = $"An error occurred: {e.Error.Message}";
+            //    MessageBox.Show(msg);
+            //}
+            //else
+            //{
+            //    //textBox1.AppendText($"{e.Result}\r\n");
+            //    WriteMessage(e.Result.ToString());
+            //}
         }
     }
 }

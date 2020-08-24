@@ -47,7 +47,20 @@ namespace CustomAlertBoxDemo.Forms
             mediaPlayer.Play();
         }
 
-        public Action PlayAudio => delegate { PlayAlarmAsync(); };
+        public Action PlayAudio => async delegate { await PlayAlarmAsync(); };
+        public void PlayMeAudio()
+        {
+            if (InvokeRequired)
+                this.Invoke(PlayAudio);
+            else
+                Task.Run(PlayAlarm);
+
+                //await Task.Run(async() => await PlayAlarmAsync());
+                //
+                //Task.Run(async() => await PlayAlarmAsync());
+        }
+
+        
 
         //private async Task PlayAlarmAsync()
         //{
@@ -73,7 +86,7 @@ namespace CustomAlertBoxDemo.Forms
 
         private async Task KickOffSelenium()
         {
-            InitSelenium();
+            await InitSelenium();
             StartBrowsingLocation();
         }
 
@@ -93,10 +106,12 @@ namespace CustomAlertBoxDemo.Forms
             {
                 reg.ReloadCurrentPage();
 
-                if (InvokeRequired)
-                    this.Invoke(PlayAudio);
-                else
-                    await PlayAlarmAsync();
+                //if (InvokeRequired)
+                //    this.Invoke(PlayAudio);
+                //else
+                //    await PlayAlarmAsync();
+                //PlayAudio();
+                PlayMeAudio();
                 
                 bool exists = reg.DniDropDown.Exists();
                 if (exists && reg.DniDropDown.IsEnabled)
@@ -132,14 +147,14 @@ namespace CustomAlertBoxDemo.Forms
             txbOutput.AppendText($"{DateTime.Now:T}: {msg}\r\n");
         }
 
-        private void CheckBoxClicked(CheckBox activeCheckBox)
+        private async void CheckBoxClicked(CheckBox activeCheckBox)
         {
             if (timer1.Enabled || IsTimeRight)
             {
                 StopTimer();
                 if (driver == null)
                 {
-                    KickOffSelenium();
+                    await KickOffSelenium();
                     //KickOffSeleniumInBackground();
                 }
                 //StartBrowsingLocation();
@@ -177,6 +192,11 @@ namespace CustomAlertBoxDemo.Forms
                 StartTimer();
         }
 
-    
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            Task.Run(PlayAlarm);
+            ;
+            ///PlayMeAudio();
+        }
     }
 }
