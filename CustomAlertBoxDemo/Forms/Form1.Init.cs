@@ -41,6 +41,9 @@ namespace CustomAlertBoxDemo.Forms
             backgroundWorker1.DoWork += backgroundWorker1_DoWork;
             backgroundWorker1.ProgressChanged += BackgroundWorker1_ProgressChanged;
             backgroundWorker1.RunWorkerCompleted += backgroundWorker1_RunWorkerCompleted;
+
+            backgroundWorker2.DoWork += backgroundWorker2_DoWork;
+            backgroundWorker2.RunWorkerCompleted += backgroundWorker2_RunWorkerCompleted;
             
             progressBar1.Minimum = 0;
             progressBar1.Maximum = 5;
@@ -70,9 +73,10 @@ namespace CustomAlertBoxDemo.Forms
 
         private void KickOffSeleniumInBackground()
         {
-            Thread thread = new Thread(() =>
+            Task.Run(async () =>
+            //Thread thread = new Thread(() =>
             {
-                KickOffSelenium();
+                await KickOffSelenium();
                 //Start_TimeConsumingOperation();
                 StartTimer();
                 //if(!backgroundWorker1.IsBusy)
@@ -81,23 +85,27 @@ namespace CustomAlertBoxDemo.Forms
                 //}
                 
             });
-            thread.Priority = ThreadPriority.BelowNormal;
-            thread.Start();
+            //thread.IsBackground = true;
+            //thread.Priority = ThreadPriority.BelowNormal;
+            //thread.Start();
         }
 
-        private void InitSelenium()
+        private async Task InitSelenium()
         {
-            driverFactory = new DriverFactory();
-            driver = driverFactory.CreateDriver();
-            reg = new RegistrationPage(driver);
-            
-            //sizing
-            var screen = WindowExt.GetSecondaryScreen().WorkingArea;
-            driver.Manage().Window.Size = new Size(screen.Width / 2, screen.Height - 200);
+            await Task.Run(() =>
+            {
+                driverFactory = new DriverFactory();
+                driver = driverFactory.CreateDriver();
+                reg = new RegistrationPage(driver);
 
-            //move window to the left if 2 screens
-            if (Screen.AllScreens.Length > 1)
-                driver.Manage().Window.Position = new Point(-1500, 0);
+                //sizing
+                var screen = WindowExt.GetSecondaryScreen().WorkingArea;
+                driver.Manage().Window.Size = new Size(screen.Width / 2, screen.Height - 200);
+
+                //move window to the left if 2 screens
+                if (Screen.AllScreens.Length > 1)
+                    driver.Manage().Window.Position = new Point(-1500, 0);
+            });
         }
 
         private void MaximalizeForm(Form form, Screen screen)

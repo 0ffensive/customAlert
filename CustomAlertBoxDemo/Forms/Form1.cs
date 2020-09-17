@@ -31,28 +31,51 @@ namespace CustomAlertBoxDemo.Forms
         private string GetSelectedLocation => chbEdynburg.Checked ? chbEdynburg.Text : chbManchester.Text;
         private bool IsTimeRight => DateTime.Now.TimeOfDay >= timePickerFrom.Value.TimeOfDay 
                                     && DateTime.Now.TimeOfDay <= timePickerTo.Value.TimeOfDay;
-        
+
         private MediaPlayer mediaPlayer = new MediaPlayer();
 
 
-        //private async Task PlayAlarmAsync()
-        //{
-        //    mediaPlayer.Open(new Uri($"{Directory.GetCurrentDirectory()}\\Resources\\alarm1.mp3"));
-        //    mediaPlayer.Play();
-        //    await Task.Yield();
-        //}
-
         private async Task PlayAlarmAsync()
         {
-            BackgroundWorker thread = new BackgroundWorker();
-            thread.DoWork += (sender, e) =>
-            {
-                mediaPlayer.Open(new Uri($"{Directory.GetCurrentDirectory()}\\Resources\\alarm1.mp3"));
-                mediaPlayer.Play();
-            };
-            thread.RunWorkerAsync();
+            mediaPlayer.Open(new Uri($"{Directory.GetCurrentDirectory()}\\Resources\\alarm1.mp3"));
+            mediaPlayer.Play();
             await Task.Yield();
         }
+        private void PlayAlarm()
+        {
+            mediaPlayer.Open(new Uri($"{Directory.GetCurrentDirectory()}\\Resources\\alarm1.mp3"));
+            mediaPlayer.Play();
+        }
+
+        public Action PlayAudio => async delegate { await PlayAlarmAsync(); };
+        public void PlayMeAudio()
+        {
+            if (InvokeRequired)
+                this.Invoke(PlayAudio);
+            else
+                Task.Run(PlayAlarm);
+
+                //await Task.Run(async() => await PlayAlarmAsync());
+                //
+                //Task.Run(async() => await PlayAlarmAsync());
+        }
+
+        
+
+        //private async Task PlayAlarmAsync()
+        //{
+        //    this.Invoke()
+        //    BackgroundWorker thread = new BackgroundWorker();
+        //    thread.DoWork += (sender, e) =>
+        //    {
+        //        MediaPlayer mediaPlayer = new MediaPlayer();
+        //        this
+        //        mediaPlayer.Open(new Uri($"{Directory.GetCurrentDirectory()}\\Resources\\alarm1.mp3"));
+        //        mediaPlayer.Play();
+        //    };
+        //    thread.RunWorkerAsync();
+        //    await Task.Yield();
+        //}
         private int GetFrequencySeconds()
         {
             if (Int32.TryParse(txbFrequency.Text, out int result))
@@ -63,7 +86,7 @@ namespace CustomAlertBoxDemo.Forms
 
         private async Task KickOffSelenium()
         {
-            InitSelenium();
+            await InitSelenium();
             StartBrowsingLocation();
         }
 
@@ -82,7 +105,13 @@ namespace CustomAlertBoxDemo.Forms
             try
             {
                 reg.ReloadCurrentPage();
-                await PlayAlarmAsync();
+
+                //if (InvokeRequired)
+                //    this.Invoke(PlayAudio);
+                //else
+                //    await PlayAlarmAsync();
+                //PlayAudio();
+                PlayMeAudio();
                 
                 bool exists = reg.DniDropDown.Exists();
                 if (exists && reg.DniDropDown.IsEnabled)
@@ -118,14 +147,14 @@ namespace CustomAlertBoxDemo.Forms
             txbOutput.AppendText($"{DateTime.Now:T}: {msg}\r\n");
         }
 
-        private void CheckBoxClicked(CheckBox activeCheckBox)
+        private async void CheckBoxClicked(CheckBox activeCheckBox)
         {
             if (timer1.Enabled || IsTimeRight)
             {
                 StopTimer();
                 if (driver == null)
                 {
-                    KickOffSelenium();
+                    await KickOffSelenium();
                     //KickOffSeleniumInBackground();
                 }
                 //StartBrowsingLocation();
@@ -163,6 +192,11 @@ namespace CustomAlertBoxDemo.Forms
                 StartTimer();
         }
 
-    
+        private void btnInfo_Click(object sender, EventArgs e)
+        {
+            Task.Run(PlayAlarm);
+            ;
+            ///PlayMeAudio();
+        }
     }
 }
